@@ -1,12 +1,12 @@
 from fastapi import APIRouter, Request
-from ..api.schemas import QuestionPayload
+from .schemas import QuestionPayload
 from ..inference.client import run_inference
 from ..utils.question_utils import is_compound_question
 
 router = APIRouter()
 
 @router.post("/answer")
-def answer_question(payload: QuestionPayload, request: Request):
+async def answer_question(payload: QuestionPayload, request: Request):
     static_cache = request.app.state.static_cache
 
     cached, score = static_cache.find(
@@ -14,20 +14,18 @@ def answer_question(payload: QuestionPayload, request: Request):
         subject=payload.subject
     )
 
+    def get_answer(item):
+        """Selects the correct answer based on the requested mode."""
+        return item.get("guided_mode_answer") if payload.mode == "guided" else item.get("exam_mode_answer")
+
     # --------------------
     # CASE 1: EXACT MATCH
     # --------------------
     if (
-    cached
-    and score >= 0.85
-    and not is_compound_question(cached["question"])
+        cached
+        and score >= 0.85
+        and not is_compound_question(cached["question"])
     ):
-        answer = (
-            cached["guided_mode_answer"]
-            if payload.mode == "guided"
-            else cached["exam_mode_answer"]
-        )
-
         return {
             "status": "cache_exact",
             "message": "Found a very close match in our exam question cache.",
@@ -37,7 +35,7 @@ def answer_question(payload: QuestionPayload, request: Request):
             "marks": cached["marks"],
             "mode_used": payload.mode,
             "confidence": round(score, 2),
-            "answer": answer,
+            "answer": get_answer(cached),
         }
 
     # ----------------------
@@ -55,7 +53,7 @@ def answer_question(payload: QuestionPayload, request: Request):
             if inference.get("status") == "inference_failed":
                 return {
                     "status": "inference_failed",
-                    "message": "Inference service is currently unavailable.",
+                    "message": f"Inference service failed: {inference.get('error', 'unknown error')}",
                     "input_question": payload.question,
                     "confidence": round(score, 2),
                 }
@@ -69,12 +67,6 @@ def answer_question(payload: QuestionPayload, request: Request):
                 "answer": inference.get("answer"),
             }
 
-        answer = (
-            cached["guided_mode_answer"]
-            if payload.mode == "guided"
-            else cached["exam_mode_answer"]
-        )
-
         return {
             "status": "cache_similar",
             "message": (
@@ -87,7 +79,7 @@ def answer_question(payload: QuestionPayload, request: Request):
             "marks": cached["marks"],
             "confidence": round(score, 2),
             "mode_used": payload.mode,
-            "answer": answer,
+            "answer": get_answer(cached),
             "next_step": {
                 "action": "enable_inference",
                 "hint": "Resubmit with enable_inference=true"
