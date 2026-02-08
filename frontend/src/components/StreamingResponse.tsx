@@ -46,17 +46,19 @@ export function StreamingResponse({ query, content, isComplete, status, onInfere
   };
 
   // Pre-process content to handle common LaTeX delimiter issues and "math in backticks"
+  const isMathy = (text: string) => {
+    const mathSymbols = /[√²³⁴⁵⁶⁷⁸⁹⁰∞→λθπΣΔ∇∂∫≈≠≤≥±×÷^Σ∏√]/;
+    // More robust equation detection: includes single operators if accompanied by variables or numbers
+    const equationPatterns = /[+\-*/=<>]{2,}|[0-9xXyYzZ\(\)]\s*[+\-*/=<>]|[+\-*/=<>] \s*[0-9xXyYzZ\(\)]/;
+    return mathSymbols.test(text) || equationPatterns.test(text);
+  };
+
   const processedSummary = (content.summary || '')
     .replace(/\\\[/g, '$$$$')
     .replace(/\\\]/g, '$$$$')
     .replace(/\\\(/g, '$$')
-    .replace(/\\\)/g, '$$');
-
-  const isMathy = (text: string) => {
-    const mathSymbols = /[√²³⁴⁵⁶⁷⁸⁹⁰∞→λθπΣΔ∇∂∫≈≠≤≥±×÷^]/;
-    const mathOperators = /[+\-*/=<>]{2,}/; // Multiple operators often indicate an equation
-    return mathSymbols.test(text) || mathOperators.test(text);
-  };
+    .replace(/\\\)/g, '$$')
+    .replace(/`([^`\n]+)`/g, (match, p1) => (isMathy(p1) ? `$${p1}$` : match));
 
   return (
     <div className="max-w-4xl mx-auto px-4 md:px-8 py-8 md:py-12 space-y-4 md:space-y-6 text-white font-sans">
