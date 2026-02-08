@@ -34,7 +34,8 @@ export function SearchResponse({ chatId, query, mode, onAnswerComplete }: Search
     }
 
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
+      const rawBackendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
+      const backendUrl = rawBackendUrl.replace(/\/$/, '');
       const response = await fetch(`${backendUrl}/answer`, {
         method: 'POST',
         headers: {
@@ -55,7 +56,7 @@ export function SearchResponse({ chatId, query, mode, onAnswerComplete }: Search
         summary: data.answer || data.message || '',
         sources: [
           {
-            type: data.status.includes('cache') ? 'syllabus' : 'document',
+            type: (data.status && data.status.includes('cache')) ? 'syllabus' : 'document',
             title: data.matched_question || 'AI Analysis',
             subtitle: data.subject ? `${data.subject} - ${data.marks} marks` : 'General Response',
             icon: 'book',

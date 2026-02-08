@@ -45,7 +45,8 @@ export default function App() {
   }, []);
 
   const fetchChats = async (session: any) => {
-    const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
+    const rawBackendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
+    const backendUrl = rawBackendUrl.replace(/\/$/, '');
     try {
       const response = await fetch(`${backendUrl}/chats`, {
         headers: {
@@ -65,7 +66,8 @@ export default function App() {
     const session = (await supabase.auth.getSession()).data.session;
     if (!session) return;
 
-    const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
+    const rawBackendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
+    const backendUrl = rawBackendUrl.replace(/\/$/, '');
     try {
       const response = await fetch(`${backendUrl}/chats/${chatId}/messages`, {
         headers: {
@@ -88,7 +90,8 @@ export default function App() {
       fetchChats(session);
 
       if (isSynced.current) return;
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
+      const rawBackendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
+      const backendUrl = rawBackendUrl.replace(/\/$/, '');
       try {
         await fetch(`${backendUrl}/auth/verify`, {
           method: 'POST',
@@ -111,54 +114,65 @@ export default function App() {
 
   const handleSearch = async (query: string, mode: 'exam' | 'guided' = 'guided') => {
     setIsSearching(true);
-    let chatId = activeChatId;
-    const session = (await supabase.auth.getSession()).data.session;
-    if (!session) return;
-
-    const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
-
-    // 1. Create chat if not exists
-    if (!chatId) {
-      try {
-        const chatResponse = await fetch(`${backendUrl}/chats`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${session.access_token}`,
-          },
-          body: JSON.stringify({ title: query.substring(0, 40) }),
-        });
-        if (chatResponse.ok) {
-          const chat = await chatResponse.json();
-          chatId = chat.id;
-          setActiveChatId(chatId);
-          setSearchHistory(prev => [chat, ...prev]);
-        }
-      } catch (err) {
-        console.error('Failed to create chat:', err);
+    try {
+      let chatId = activeChatId;
+      const session = (await supabase.auth.getSession()).data.session;
+      if (!session) {
+        setIsSearching(false);
         return;
       }
-    }
 
-    // 2. Add user message locally and to DB
-    const userMsg = { role: 'user', content: query };
-    setMessages(prev => [...prev, userMsg]);
+      const rawBackendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
+      const backendUrl = rawBackendUrl.replace(/\/$/, '');
 
-    try {
-      await fetch(`${backendUrl}/chats/${chatId}/messages`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${session.access_token}`,
-        },
-        body: JSON.stringify(userMsg),
-      });
+      // 1. Create chat if not exists
+      if (!chatId) {
+        try {
+          const chatResponse = await fetch(`${backendUrl}/chats`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${session.access_token}`,
+            },
+            body: JSON.stringify({ title: query.substring(0, 40) }),
+          });
+          if (chatResponse.ok) {
+            const chat = await chatResponse.json();
+            chatId = chat.id;
+            setActiveChatId(chatId);
+            setSearchHistory(prev => [chat, ...prev]);
+          }
+        } catch (err) {
+          console.error('Failed to create chat:', err);
+          // Don't return, allow user to see message but maybe AI response will fail later or work if chatId exists
+        }
+      }
+
+      // 2. Add user message locally and to DB
+      const userMsg = { role: 'user', content: query };
+      setMessages(prev => [...prev, userMsg]);
+
+      if (chatId) {
+        try {
+          await fetch(`${backendUrl}/chats/${chatId}/messages`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${session.access_token}`,
+            },
+            body: JSON.stringify(userMsg),
+          });
+        } catch (err) {
+          console.error('Failed to save user message:', err);
+        }
+      }
+
+      // 3. Trigger AI response (this will be handled by the Streaming UI component which we'll update)
+      setActiveSearchMode(mode);
     } catch (err) {
-      console.error('Failed to save user message:', err);
+      console.error('Search failed:', err);
+      setIsSearching(false);
     }
-
-    // 3. Trigger AI response (this will be handled by the Streaming UI component which we'll update)
-    setActiveSearchMode(mode);
   };
 
   const handleHistoryClick = (item: any) => {

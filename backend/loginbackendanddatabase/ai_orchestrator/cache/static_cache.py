@@ -12,16 +12,36 @@ class StaticCache:
 
     def load(self):
         self.items = []
-        if not DATASET_PATH.exists():
-            print(f"WARNING: Dataset not found at {DATASET_PATH.absolute()}")
+        
+        # Possible paths to check (Vercel deployment can have different structures)
+        possible_paths = [
+            DATASET_PATH,
+            Path(__file__).parent.parent.parent / "loginbackendanddatabase" / "data" / "expanded_dataset.jsonl",
+            Path.cwd() / "data" / "expanded_dataset.jsonl",
+            Path.cwd() / "backend" / "loginbackendanddatabase" / "data" / "expanded_dataset.jsonl"
+        ]
+
+        actual_path = None
+        for p in possible_paths:
+            if p.exists():
+                actual_path = p
+                break
+
+        if not actual_path:
+            print(f"WARNING: Dataset not found in any of: {[str(p.absolute()) for p in possible_paths]}")
             return
 
-        with DATASET_PATH.open("r", encoding="utf-8") as f:
+        print(f"DEBUG: Loading dataset from {actual_path.absolute()}")
+        with actual_path.open("r", encoding="utf-8") as f:
             for line in f:
                 line = line.strip()
                 if not line:
                     continue
-                self.items.append(json.loads(line))
+                try:
+                    self.items.append(json.loads(line))
+                except json.JSONDecodeError as e:
+                    print(f"ERROR: Failed to parse line in dataset: {e}")
+                    continue
         print(f"DEBUG: Loaded {len(self.items)} items into cache.")
 
     def _mandatory_token_gate(self, query: str, item_question: str) -> bool:
