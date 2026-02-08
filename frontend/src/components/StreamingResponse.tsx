@@ -45,6 +45,13 @@ export function StreamingResponse({ query, content, isComplete, status, onInfere
     zap: Zap
   };
 
+  // Pre-process content to handle common LaTeX delimiter issues
+  const processedSummary = (content.summary || '')
+    .replace(/\\\[/g, '$$$$')
+    .replace(/\\\]/g, '$$$$')
+    .replace(/\\\(/g, '$$')
+    .replace(/\\\)/g, '$$');
+
   return (
     <div className="max-w-4xl mx-auto px-4 md:px-8 py-8 md:py-12 space-y-4 md:space-y-6 text-white font-sans">
       {/* Ask-M Response */}
@@ -134,7 +141,7 @@ export function StreamingResponse({ query, content, isComplete, status, onInfere
               }
             }}
           >
-            {content.summary}
+            {processedSummary}
           </ReactMarkdown>
 
           {/* Thinking Dot while generating */}
