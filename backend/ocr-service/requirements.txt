@@ -1,0 +1,14 @@
+paddlepaddle
+paddleocr
+fastapi
+uvicorn
+opencv-python-headless
+numpy
+boto3
+qdrant-client
+python-multipart
+python-dotenv
+pdf2image
+pillow
+torch 
+transformers

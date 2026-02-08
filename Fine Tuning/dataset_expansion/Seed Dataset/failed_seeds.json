@@ -1,0 +1,589 @@
+[
+  {
+    "subject": "EDRG 101",
+    "question": "On a map a rectangle of 125 cm x 200 cm represents an area of 6250 square kilometers. Draw a backward vernier scale to show decameter and long enough to measure up to 7km. Show a distance of 5.43 km and 57 dm on it.",
+    "mark": 12,
+    "paper_type": "endsem",
+    "section": "B",
+    "semester": 1,
+    "family": "design"
+  },
+  {
+    "subject": "EDRG 101",
+    "question": "A circle of diameter 40 mm rolls outside a circular arc of radius 60 mm for one and half revolution. Draw the locus of a point, lying at a distance of 30 mm from center of rolling circle.",
+    "mark": 12,
+    "paper_type": "endsem",
+    "section": "B",
+    "semester": 1,
+    "family": "design"
+  },
+  {
+    "subject": "EDRG 101",
+    "question": "A square prism 35 mm sides of base and 60 mm axis length rests on HP on one of its corners of the base such that the two base edges containing the corner on which it rests make equal inclinations with HP. Draw the projections of the prism when the axis is inclined to HP at $40^{\\circ}$ and to VP at $30^{\\circ}$ .",
+    "mark": 12,
+    "paper_type": "endsem",
+    "section": "B",
+    "semester": 1,
+    "family": "design"
+  },
+  {
+    "subject": "EDRG 101",
+    "question": "A rectangular plot of land measuring 1.28 hectors is represented on a map by a similar rectangle of 8 sq.cm. Calculate the RF of the scale. Draw a diagonal scale to read single meter. Show a distance of 224m and 438m on this scale.",
+    "mark": 6,
+    "paper_type": "internal",
+    "section": "B",
+    "semester": 1,
+    "family": "design"
+  },
+  {
+    "subject": "EDRG 101",
+    "question": "Draw the elliptical curve passing through the points P, A and B with following description. Draw tangent to the conic at any point on the curve. AB represents the major axis of an ellipse and measures 24cm. Any point P at a distance of 18cm from A and 10cm from B. Give all possible description and dimensions properly. [Construct curve in scale 1:2]",
+    "mark": 6,
+    "paper_type": "internal",
+    "section": "B",
+    "semester": 1,
+    "family": "design"
+  },
+  {
+    "subject": "EDRG 101",
+    "question": "A thin circular disc of 50 mm diameter is allowed to roll without slipping from upper edge of sloping plank which is inclined at 15° with the horizontal plane. Draw the curve traced by the point on the circumference of the disc.",
+    "mark": 6,
+    "paper_type": "internal",
+    "section": "B",
+    "semester": 1,
+    "family": "design"
+  },
+  {
+    "index": 91,
+    "seed": {
+      "subject": "MATH 101",
+      "question": "Let $A = \\begin{bmatrix} 1 & 6 \\\\ 5 & 2 \\end{bmatrix}$ , find the eigenvalues and eigenvectors of $A$ .",
+      "mark": 4,
+      "paper_type": "endsem",
+      "section": "D",
+      "semester": 1,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 101,
+    "seed": {
+      "subject": "MATH 101",
+      "question": "Define critical point. Sketch the graph of the function $f(x) = x^{3} + 3x^{2} + 2$ .",
+      "mark": 5,
+      "paper_type": "internal",
+      "section": "C",
+      "semester": 1,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 102,
+    "seed": {
+      "subject": "MATH 101",
+      "question": "a) The range of $f(x) = \\sqrt{x - 1}$ is\nb) The value of $\\lim_{\\theta \\to 3^{+}}\\frac{|\\theta|}{\\theta}$ is\nThe graph of the function $f(x) = x^{1 / 3}$ has vertical tangents at the point where $x =$\nIf $f$ \"changes from negative to positive or positive to negative at $c$ , then $c$ is called [Choose appropriate answers: Stationary point; Critical point; Point of inflection; Turning point]",
+      "mark": 5,
+      "paper_type": "internal",
+      "section": "C",
+      "semester": 1,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 105,
+    "seed": {
+      "subject": "MATH 101",
+      "question": "State necessary and sufficient condition for local extreme values. Find the local extreme values of $y = x^{1 / 3}\\left(x - 4\\right)$ . Also find the point of inflection, if any.",
+      "mark": 5,
+      "paper_type": "internal",
+      "section": "C",
+      "semester": 1,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 106,
+    "seed": {
+      "subject": "MATH 101",
+      "question": "Sketch the graph of the function $f(x) = x^{4} - 4x^{3} + 10$ .",
+      "mark": 5,
+      "paper_type": "internal",
+      "section": "C",
+      "semester": 1,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 121,
+    "seed": {
+      "subject": "MATH 101",
+      "question": "Find the area of the region enclosed by the curve $y^{2} - 4x = 4$ and line $4x - y = 16$",
+      "mark": 2,
+      "paper_type": "internal",
+      "section": "B",
+      "semester": 1,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 266,
+    "seed": {
+      "subject": "COMP 116",
+      "question": "Write program to represent transactions of a Digital Wallet which have following details: Balance: Data member which represents available balance, Reward points: Data member which represents rewards points, Load Balance: Action which represents loading balance, Make a payment: Action which represent making a payment, Payment History: Action which help to browse through last five transactions. For every payment greater than the amount of 2000 balance earns reward points of 50. Every 1000 reward points earns Balance of 10 and the Balance is incremented by 10. Define abstract class \"Digital_wallet\" having data members Balance and Reward points. Derive another class \"Transaction\" which performs the above mentioned action and activities. Store information about five transactions in an array and implement run time polymorphism to display information about a particular transaction_ID. [Make necessary assumptions]",
+      "mark": 16,
+      "paper_type": "endsem",
+      "section": "C",
+      "semester": 2,
+      "family": "programming"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 274,
+    "seed": {
+      "subject": "ENGG 112",
+      "question": "Using superposition, determine the current labeled $i_x$ in the circuit represented in Fig. 3.",
+      "mark": 4,
+      "paper_type": "internal",
+      "section": "B",
+      "semester": 2,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 276,
+    "seed": {
+      "subject": "ENGG 112",
+      "question": "Calculate the induced current and voltage shown in Figure 3.\n$I_{s}$\n$V$\n$I_{s}$",
+      "mark": 10,
+      "paper_type": "endsem",
+      "section": "B",
+      "semester": 2,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 305,
+    "seed": {
+      "subject": "MATH 104",
+      "question": "Find the particle's velocity and acceleration vectors. Then find particle's speed and direction of motion at the given value of $t$. write the particle's velocity at that time as product of its speed and direction.\n$\\vec{r} (t) = (2cost)\\vec{i} +(3sint)\\vec{j} +4t\\vec{k},t = \\pi /2.$",
+      "mark": 4,
+      "paper_type": "internal",
+      "section": "B",
+      "semester": 2,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 326,
+    "seed": {
+      "subject": "MATH 104",
+      "question": "Find the absolute maximum and minimum values of $f(x,y) = 2 + 2x + 3y - y^2 - y^3$ on the triangular plate in the first quadrant bounded by the lines $x = 0,y = 0,y = 9 - x$.",
+      "mark": 7,
+      "paper_type": "endsem",
+      "section": "C",
+      "semester": 2,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 336,
+    "seed": {
+      "subject": "MATH 104",
+      "question": "Find the surface area of the portion of the paraboloid whose equation is given by $\\vec{r} (r,\\theta) = (r\\cos \\theta)\\vec{i} +(r\\sin \\theta)\\vec{j} +r^{2}\\vec{k},0\\leq r\\leq 2,0\\leq \\theta \\leq 2\\pi .$",
+      "mark": 3,
+      "paper_type": "endsem",
+      "section": "B",
+      "semester": 2,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 339,
+    "seed": {
+      "subject": "MATH 104",
+      "question": "Discuss and sketch the cardioid $r = a(1 + \\cos \\theta),a > 0$ and find the area of the region inside this cardioid.",
+      "mark": 7,
+      "paper_type": "endsem",
+      "section": "C",
+      "semester": 2,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 346,
+    "seed": {
+      "subject": "MATH 104",
+      "question": "If $\\vec{u}$ and $\\vec{v}$ be differentiable vector functions of $t$ then show that $\\frac{d}{dt} (\\vec{u}\\cdot \\vec{v}) = \\frac{d\\vec{u}}{dt}\\cdot \\vec{v} +\\vec{u}\\cdot \\frac{d\\vec{v}}{dt}.$",
+      "mark": 3,
+      "paper_type": "endsem",
+      "section": "B",
+      "semester": 2,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 353,
+    "seed": {
+      "subject": "MATH 104",
+      "question": "State the Gamma function and use it to evaluate $\\int_{0}^{\\pi /2} \\sin^{6} \\theta \\cdot \\cos^{7} \\theta d\\theta$.",
+      "mark": 3,
+      "paper_type": "endsem",
+      "section": "B",
+      "semester": 2,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 413,
+    "seed": {
+      "subject": "ENVE 101",
+      "question": "Determine combined discharge from the following data: Area to be served $= 6,000,000$ sq.m., Population density $= 1084$ per ha, Time of entry $= 5$ min, Time of flow $= 18$ min, Rate of water supply $= 170$ Iped, Permeability $= 50\\%$, Peak factor $= 3$, Time of concentration $= \\text{Sum of time of entry and time of flow}$. Also, calculate the cross sectional area of circular sewer if velocity of flow is $1.5$ m/s and the diameter of sewer.",
+      "mark": 6,
+      "paper_type": "endsem",
+      "section": "C",
+      "semester": 2,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 484,
+    "seed": {
+      "subject": "PHYS 102",
+      "question": "If $B$ is uniform, show that $A(r) = -\\frac{1}{2}(r \\times B)$ works. That is, check that $\\nabla \\cdot A = 0$ and $\\nabla \\times A = B$.",
+      "mark": 5,
+      "paper_type": "endsem",
+      "section": "C",
+      "semester": 2,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 487,
+    "seed": {
+      "subject": "PHYS 102",
+      "question": "Show that the magnitude of electric field at a point due to a short dipole of dipole moment $p$ is given by $E(r,\\theta) = \\frac{p}{4\\pi\\epsilon_0 r^3}\\sqrt{3\\cos^2\\theta + 1}$, where $r$ is the magnitude of position vector of the point from the dipole center and $\\theta$ is the angle between position vector and dipole moment.",
+      "mark": 5,
+      "paper_type": "endsem",
+      "section": "C",
+      "semester": 2,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 499,
+    "seed": {
+      "subject": "PHYS 102",
+      "question": "Find the magnetic vector potential of a finite segment of straight wire carrying a current $I$. Calculate the magnetic field associated with this vector potential.",
+      "mark": 5,
+      "paper_type": "endsem",
+      "section": "C",
+      "semester": 2,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 503,
+    "seed": {
+      "subject": "PHYS 102",
+      "question": "What does the Biot-Savart law describe? Write its mathematical form. Show that the magnitude of magnetic field on the axis of a tightly wound solenoid (helical coil) consisting of $n$ turns per unit length wrapped around a cylindrical tube of radius '$a$' and carrying current $I$ is given by $B = \\frac{1}{2} \\mu_{0} n I (\\cos \\theta_{2} - \\cos \\theta_{1})$",
+      "mark": 5,
+      "paper_type": "internal",
+      "section": "C",
+      "semester": 2,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 504,
+    "seed": {
+      "subject": "PHYS 102",
+      "question": "A long coaxial cable carries current $I$ (the current flows down the surface of the inner cylinder, radius $a$, and back along the outer cylinder, radius $b$). Find the magnetic energy stored in a section of length $l$. Also find coefficient of self-induction.",
+      "mark": 5,
+      "paper_type": "internal",
+      "section": "C",
+      "semester": 2,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 548,
+    "seed": {
+      "subject": "MATH 208",
+      "question": "The thickness of silicon chips produced by a machine are observed. 12 samples each of size 3 are found to have following values of means and ranges of thickness of sample units:\nSample: 1 2 3 4 5 6 7 8 9 10 11 12\nMeans $(\\bar{X})$: 0.258, 0.249, 0.259, 0.268, 0.256, 0.268, 0.260, 0.257, 0.257, 0.245, 2.248, 0.239\nRange $(R)$: 0.038, 0.030, 0.009, 0.024, 0.039, 0.003, 0.026, 0.046, 0.035, 0.017, 0.049, 0.005\nConstruct (a) $\\bar{X}$ - chart based on range (b) R- chart. Analyze the charts.\n[Hints: $A_{2} = 1.023, D_{3} = 0, D_{4} = 2.574]$",
+      "mark": 4,
+      "paper_type": "endsem",
+      "section": "D",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 556,
+    "seed": {
+      "subject": "MATH 208",
+      "question": "10 cars were equipped with radial tires and driven over a test course. Then the same 10 cars (with the same drivers) were equipped with regular belted tires and driven over the same course. After each run, the cars' fuel economy (in km/l) was measured. The results are presented below-\nRadial tire: 4.2 4.7 6.6 7.0 6.8 4.5 5.7 6.0 7.4 4.9\nBelted tire: 4.1 4.9 6.2 6.9 6.8 4.4 5.7 5.8 6.9 4.7\nIs there evidence that radial tires produce better fuel economy? (Assume normality of data, and use paired t- test at $\\alpha = 0.05$ ). Also, find a $95\\%$ confidence interval for the mean difference in fuel economy between radial tires and belted tires.",
+      "mark": 7,
+      "paper_type": "endsem",
+      "section": "C",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 563,
+    "seed": {
+      "subject": "MATH 208",
+      "question": "The thickness of silicon chips produced by a machine are observed. 12 samples each of size 3 are found to have following values of means and ranges of thickness of sample units!\nSample: 1 2 3 4 5 6 7 8 9 10 11 12\nMeans $(\\bar{X})$: 0.258 0.249 0.259 0.268 0.256 0.268 0.260 0.257 0.257 0.245 2.248 0.239\nRange $(R)$: 0.038 0.030 0.009 0.024 0.039 0.003 0.026 0.046 0.035 0.017 0.049 0.005\nConstruct (a) $\\bar{X}$ based on range (b) R chart. Analyze the charts. [Hints: $A_{2} = 1.023$ , $D_{3} = 0$ , $D_{4} = 2.574$ ]",
+      "mark": 4,
+      "paper_type": "endsem",
+      "section": "D",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 575,
+    "seed": {
+      "subject": "EEEG 202",
+      "question": "a. Find $(r-1)$'s complement of $(1001.001)_2$ and $(27.95)_{10}$.\nb. Construct an $8 \\times 1$ multiplexer using $2 \\times 1$ multiplexer.\nc. Design a combinational logic circuit with 4 inputs and 4 outputs that converts a 4 bit gray code into equivalent excess-3 code.",
+      "mark": 5,
+      "paper_type": "endsem",
+      "section": "C",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 578,
+    "seed": {
+      "subject": "EEEG 202",
+      "question": "a. Compare counters and registers. Design a mod-12 asynchronous down counter.\nb. Explain how a universal register can be used as different types of registers.",
+      "mark": 5,
+      "paper_type": "endsem",
+      "section": "C",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 583,
+    "seed": {
+      "subject": "EEEG 202",
+      "question": "a. A sequential circuit has two flip-flops (A and B), two inputs (x and y), and an output (y). The flip flop input functions and the circuit output functions are as follows:\n$JA = x B + y'B'$\n$KA = x y'B'$\n$JB = x A'$\n$KB = x y' + A$\n$z = x y A + x'y'B$\nObtain the logic diagram, state table, state diagram, and state equations.\nb. Explain types of registers? Design a 4 bit asynchronous binary up down counter.",
+      "mark": 5,
+      "paper_type": "endsem",
+      "section": "C",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 588,
+    "seed": {
+      "subject": "EEEG 202",
+      "question": "Write the three different methods to find the 2's complement of a given number. Subtract the following decimals numbers by 9's and 10's complement method respectively.\na. $(578.15)_{10} - (288.6)_{10}$\nb. $(3452.67)_{10} - (42358.74)_{10}$",
+      "mark": 2.5,
+      "paper_type": "internal",
+      "section": "B",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 604,
+    "seed": {
+      "subject": "COMP 202",
+      "question": "What is a priority queue? Using heap data structure, construct an ascending priority queue from the following data.\n2- A, 5- B, 8- X, 6- W, 1- C, 4- D, 7- E, 3- F\nHere, the first number is the priority (lower value indicates higher priority) and the letter is the data. [1+3]",
+      "mark": 4,
+      "paper_type": "endsem",
+      "section": "B",
+      "semester": 3,
+      "family": "programming"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 646,
+    "seed": {
+      "subject": "MCSC 201",
+      "question": "Define semi-group, group and monoid. Let $f$ be a homomorphism from a semi-group $(S, *)$ to $(T, *)$. If $S'$ is a submonoid of $S$, then show that $f(S') = \\{t \\in T : t = f(s), \\text{ for some } s \\text{ in } S'\\}$, the image of $S'$ under $f$ is a submonoid of $T$.",
+      "mark": 7,
+      "paper_type": "endsem",
+      "section": "C",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 647,
+    "seed": {
+      "subject": "MCSC 201",
+      "question": "Define the permutation function. Let $A = \\{a, b, c, d, e, f\\}$. Compute $(a, c, e) \\circ (b, f, c)$ and check the resultant permutation is even or odd.",
+      "mark": 4,
+      "paper_type": "endsem",
+      "section": "D",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 661,
+    "seed": {
+      "subject": "MCSC 201",
+      "question": "What are the conjunction, disjunction, and implication of any two statements? Show that the compound statement $\\left((p \\Rightarrow q) \\land (q \\Rightarrow r)\\right) \\Rightarrow (p \\Rightarrow r)$ is a tautology.",
+      "mark": 7,
+      "paper_type": "endsem",
+      "section": "C",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 665,
+    "seed": {
+      "subject": "MCSC 201",
+      "question": "Determine the Hasse diagram of the relation on $A = \\{1, 2, 3, 4, 5\\}$ whose matrix is shown\n\n(image[[430, 711, 640, 792]])",
+      "mark": 4,
+      "paper_type": "endsem",
+      "section": "D",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 682,
+    "seed": {
+      "subject": "MCSC 201",
+      "question": "Define Least upper bound and Greatest lower bound. Let $B = \\{c,d,e\\}$, then find, if they exists\n(a) All upper bounds of $B$\n(b) All lower bounds of $B$\n(c) The least upper bound of $B$\n(d) The greatest lower bound of $B$\nfrom the Poset as shown in Figure below:\n\n(image[[146, 191, 282, 307]])",
+      "mark": 4,
+      "paper_type": "endsem",
+      "section": "D",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 710,
+    "seed": {
+      "subject": "MCSC201",
+      "question": "$A = \\{1, 2, 3, 4, 6\\} = B$; $aRb$ if and only if $a$ is a multiple of $b$. Find the domain, range, matrix, and the digraph of the relation $R$.",
+      "mark": 4,
+      "paper_type": "internal",
+      "section": "B",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 714,
+    "seed": {
+      "subject": "EEEG 211",
+      "question": "Derive the expressions of gains for,\ni. Non-inverting amplifier.\nii. Differential input amplifier.",
+      "mark": 4,
+      "paper_type": "endsem",
+      "section": "B",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 719,
+    "seed": {
+      "subject": "EEEG 211",
+      "question": "For a class B amplifier providing a 20-V peak signal to a 16-ohm load (speaker) and a power supply of VCC = 30 V, determine the input power, output power, and circuit efficiency.",
+      "mark": 4,
+      "paper_type": "endsem",
+      "section": "B",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 741,
+    "seed": {
+      "subject": "EEEG 211",
+      "question": "Derive the inverting and non-inverting gain of operational amplifier. Also discuss its characteristics.",
+      "mark": 4,
+      "paper_type": "endsem",
+      "section": "B",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 754,
+    "seed": {
+      "subject": "EEEG 211",
+      "question": "Draw a circuit of a differential amplifier using MOSFET and explain its working.",
+      "mark": 11,
+      "paper_type": "endsem",
+      "section": "B",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 758,
+    "seed": {
+      "subject": "EEEG 211",
+      "question": "With explanation, draw emitter current (ie) versus base to emitter potential difference (vBE) and collector current (ic) versus collector to emitter potential difference (vCE) for a NPN type Bipolar Junction Transistor operating in the active region.",
+      "mark": 11,
+      "paper_type": "endsem",
+      "section": "B",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 763,
+    "seed": {
+      "subject": "EEEG 211",
+      "question": "Develop a circuit with explanation to obtain the transfer characteristics as shown in the figure 1. Output shall be equal to input in the linear region. Non-linear region starts from +6 units at right and -5 units at left. Output shall be less than input by the factor of 1/2 in the non-linear region.\n\nFigure: 1\n\nFigure: 2",
+      "mark": 11,
+      "paper_type": "endsem",
+      "section": "B",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  }
+]

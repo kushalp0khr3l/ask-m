@@ -1,0 +1,15 @@
+[
+  {
+    "index": 0,
+    "seed": {
+      "subject": "EDRG 101",
+      "question": "A circle of diameter 40 mm rolls outside a circular arc of radius 60 mm for one and half revolution. Draw the locus of a point, lying at a distance of 30 mm from center of rolling circle.",
+      "mark": 12,
+      "paper_type": "endsem",
+      "section": "B",
+      "semester": 1,
+      "family": "design"
+    },
+    "error": "Parse failed"
+  }
+]

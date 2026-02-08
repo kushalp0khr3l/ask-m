@@ -1,0 +1,28 @@
+[
+  {
+    "index": 0,
+    "seed": {
+      "subject": "PHYS101",
+      "question": "Find the center of mass of a homogeneous semicircular plate of radius R.",
+      "mark": 2.5,
+      "paper_type": "internal",
+      "section": "B",
+      "semester": 1,
+      "family": "math_phys"
+    },
+    "error": "Math guided pass failed"
+  },
+  {
+    "index": 2,
+    "seed": {
+      "subject": "PHYS101",
+      "question": "Establish the differential equation of motion for a damped harmonic oscillator and obtain the expression for displacement.",
+      "mark": 5,
+      "paper_type": "internal",
+      "section": "C",
+      "semester": 1,
+      "family": "math_phys"
+    },
+    "error": "Math guided pass failed"
+  }
+]

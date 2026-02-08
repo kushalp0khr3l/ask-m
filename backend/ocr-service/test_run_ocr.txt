@@ -1,0 +1,11 @@
+Paste the bash script below to your terminal and run.it should return the parsed text.
+
+python3 - <<EOF
+from r2 import download_from_r2
+from ocr_pipeline import run_ocr
+
+image_bytes = download_from_r2("ask-m-notes", "test/test.png")
+text = run_ocr(image_bytes, "test/test.png")
+
+print(text[:500])
+EOF

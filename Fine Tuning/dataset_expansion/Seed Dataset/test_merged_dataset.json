@@ -1,0 +1,38 @@
+[
+  {
+    "subject": "PHYS101",
+    "question": "Find the center of mass of a homogeneous semicircular plate of radius R.",
+    "mark": 2.5,
+    "paper_type": "internal",
+    "section": "B",
+    "semester": 1,
+    "family": "math_phys"
+  },
+  {
+    "subject": "PHYS101",
+    "question": "Derive Newton's second law for system of variable mass.",
+    "mark": 2.5,
+    "paper_type": "internal",
+    "section": "B",
+    "semester": 1,
+    "family": "math_phys"
+  },
+  {
+    "subject": "PHYS101",
+    "question": "Establish the differential equation of motion for a damped harmonic oscillator and obtain the expression for displacement.",
+    "mark": 5,
+    "paper_type": "internal",
+    "section": "C",
+    "semester": 1,
+    "family": "math_phys"
+  },
+  {
+    "subject": "PHYS101",
+    "question": "Derive an expression for M. I. of solid sphere (i) about z axis (about diameter) (ii) about tangent.",
+    "mark": 2.5,
+    "paper_type": "internal",
+    "section": "B",
+    "semester": 1,
+    "family": "math_phys"
+  }
+]

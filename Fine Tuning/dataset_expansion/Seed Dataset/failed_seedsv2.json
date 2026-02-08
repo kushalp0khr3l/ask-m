@@ -1,0 +1,158 @@
+[
+  {
+    "index": 0,
+    "seed": {
+      "subject": "EDRG 101",
+      "question": "A circle of diameter 40 mm rolls outside a circular arc of radius 60 mm for one and half revolution. Draw the locus of a point, lying at a distance of 30 mm from center of rolling circle.",
+      "mark": 12,
+      "paper_type": "endsem",
+      "section": "B",
+      "semester": 1,
+      "family": "design"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 2,
+    "seed": {
+      "subject": "MATH 101",
+      "question": "Let $A = \\begin{bmatrix} 1 & 6 \\\\ 5 & 2 \\end{bmatrix}$ , find the eigenvalues and eigenvectors of $A$ .",
+      "mark": 4,
+      "paper_type": "endsem",
+      "section": "D",
+      "semester": 1,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 3,
+    "seed": {
+      "subject": "MATH 101",
+      "question": "Define critical point. Sketch the graph of the function $f(x) = x^{3} + 3x^{2} + 2$ .",
+      "mark": 5,
+      "paper_type": "internal",
+      "section": "C",
+      "semester": 1,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 5,
+    "seed": {
+      "subject": "MATH 101",
+      "question": "State necessary and sufficient condition for local extreme values. Find the local extreme values of $y = x^{1 / 3}\\left(x - 4\\right)$ . Also find the point of inflection, if any.",
+      "mark": 5,
+      "paper_type": "internal",
+      "section": "C",
+      "semester": 1,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 14,
+    "seed": {
+      "subject": "MATH 104",
+      "question": "Discuss and sketch the cardioid $r = a(1 + \\cos \\theta),a > 0$ and find the area of the region inside this cardioid.",
+      "mark": 7,
+      "paper_type": "endsem",
+      "section": "C",
+      "semester": 2,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 23,
+    "seed": {
+      "subject": "MATH 208",
+      "question": "The thickness of silicon chips produced by a machine are observed. 12 samples each of size 3 are found to have following values of means and ranges of thickness of sample units:\nSample: 1 2 3 4 5 6 7 8 9 10 11 12\nMeans $(\\bar{X})$: 0.258, 0.249, 0.259, 0.268, 0.256, 0.268, 0.260, 0.257, 0.257, 0.245, 2.248, 0.239\nRange $(R)$: 0.038, 0.030, 0.009, 0.024, 0.039, 0.003, 0.026, 0.046, 0.035, 0.017, 0.049, 0.005\nConstruct (a) $\\bar{X}$ - chart based on range (b) R- chart. Analyze the charts.\n[Hints: $A_{2} = 1.023, D_{3} = 0, D_{4} = 2.574]$",
+      "mark": 4,
+      "paper_type": "endsem",
+      "section": "D",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 27,
+    "seed": {
+      "subject": "EEEG 202",
+      "question": "a. Compare counters and registers. Design a mod-12 asynchronous down counter.\nb. Explain how a universal register can be used as different types of registers.",
+      "mark": 5,
+      "paper_type": "endsem",
+      "section": "C",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 28,
+    "seed": {
+      "subject": "EEEG 202",
+      "question": "a. A sequential circuit has two flip-flops (A and B), two inputs (x and y), and an output (y). The flip flop input functions and the circuit output functions are as follows:\n$JA = x B + y'B'$\n$KA = x y'B'$\n$JB = x A'$\n$KB = x y' + A$\n$z = x y A + x'y'B$\nObtain the logic diagram, state table, state diagram, and state equations.\nb. Explain types of registers? Design a 4 bit asynchronous binary up down counter.",
+      "mark": 5,
+      "paper_type": "endsem",
+      "section": "C",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 33,
+    "seed": {
+      "subject": "MCSC 201",
+      "question": "What are the conjunction, disjunction, and implication of any two statements? Show that the compound statement $\\left((p \\Rightarrow q) \\land (q \\Rightarrow r)\\right) \\Rightarrow (p \\Rightarrow r)$ is a tautology.",
+      "mark": 7,
+      "paper_type": "endsem",
+      "section": "C",
+      "semester": 3,
+      "famil": "math_phys"
+    },
+    "error": "Unknown family"
+  },
+  {
+    "index": 34,
+    "seed": {
+      "subject": "MCSC 201",
+      "question": "Determine the Hasse diagram of the relation on $A = \\{1, 2, 3, 4, 5\\}$ whose matrix is shown\n\n(image[[430, 711, 640, 792]])",
+      "mark": 4,
+      "paper_type": "endsem",
+      "section": "D",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 35,
+    "seed": {
+      "subject": "MCSC 201",
+      "question": "Define Least upper bound and Greatest lower bound. Let $B = \\{c,d,e\\}$, then find, if they exists\n(a) All upper bounds of $B$\n(b) All lower bounds of $B$\n(c) The least upper bound of $B$\n(d) The greatest lower bound of $B$\nfrom the Poset as shown in Figure below:\n\n(image[[146, 191, 282, 307]])",
+      "mark": 4,
+      "paper_type": "endsem",
+      "section": "D",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  },
+  {
+    "index": 36,
+    "seed": {
+      "subject": "MCSC201",
+      "question": "$A = \\{1, 2, 3, 4, 6\\} = B$; $aRb$ if and only if $a$ is a multiple of $b$. Find the domain, range, matrix, and the digraph of the relation $R$.",
+      "mark": 4,
+      "paper_type": "internal",
+      "section": "B",
+      "semester": 3,
+      "family": "math_phys"
+    },
+    "error": "Guided pass failed"
+  }
+]

@@ -1,0 +1,802 @@
+[
+  {
+    "subject": "CHEM 101",
+    "question": "What is a mole?",
+    "exam_mode_answer": "** A mole is the SI base unit for measuring the amount of a substance. One mole contains exactly Avogadro's number (6.02214076×10²³) of elementary entities, which can be atoms, molecules, ions, or other specified particles. It provides a bridge between the macroscopic scale (grams) and the atomic/molecular scale.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "What is molar mass?",
+    "exam_mode_answer": "** Molar mass is defined as the mass in grams of one mole of a given substance. It is numerically equal to the substance's relative atomic mass (for elements) or relative molecular mass (for compounds) when expressed in atomic mass units (amu). Its unit is grams per mole (g/mol).",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "Define chemical equilibrium.",
+    "exam_mode_answer": "** Chemical equilibrium is a dynamic state in a reversible chemical reaction where the rates of the forward and reverse reactions become equal. Consequently, the concentrations (or partial pressures) of the reactants and products remain constant over time, although molecular-level activity continues.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "What is the equilibrium constant?",
+    "exam_mode_answer": "** The equilibrium constant (K) is a dimensionless number that quantifies the position of chemical equilibrium for a reversible reaction at a given temperature. It is calculated as the ratio of the product of the equilibrium concentrations (or pressures) of the products to that of the reactants, each raised to the power of their respective stoichiometric coefficients.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "Define half-life.",
+    "exam_mode_answer": "** Half-life (t₁/₂) is the time required for the quantity (e.g., concentration, number of atoms) of a substance undergoing decay (typically radioactive decay or a first-order chemical reaction) to reduce to exactly one-half of its initial value.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "How does temperature affect equilibrium?",
+    "exam_mode_answer": "** According to Le Chatelier's principle, a change in temperature will shift the equilibrium position to counteract that change. For an endothermic reaction (ΔH > 0), increasing temperature favors the forward reaction (product formation), increasing K. For an exothermic reaction (ΔH < 0), increasing temperature favors the reverse reaction (reactant formation), decreasing K. This occurs because temperature changes the relative rates of the forward and reverse reactions.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "State Le Chatelier’s principle.",
+    "exam_mode_answer": "** Le Chatelier's principle states that if a dynamic system at equilibrium is subjected to a change in concentration, pressure, volume, or temperature, the equilibrium position will shift in the direction that tends to counteract or minimize the effect of that applied change. This shift occurs to re-establish a new state of equilibrium.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "Write the half-cell reaction for Zn/Zn²⁺ electrode.",
+    "exam_mode_answer": "** The half-cell reaction for a standard Zn/Zn²⁺ electrode (which acts as an anode in a galvanic cell) is an oxidation reaction:\\n\\[\\n\\text{Zn (s)} \\rightarrow \\text{Zn}^{2+} \\text{(aq)} + 2e^-\\n\\]",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "Explain oxidation state.",
+    "exam_mode_answer": "** The oxidation state (or oxidation number) is a theoretical charge assigned to an atom within a molecule or ion. It is calculated assuming that all chemical bonds are purely ionic, with electrons completely transferred to the more electronegative atom. It is a crucial concept for identifying redox reactions, balancing chemical equations, and understanding oxidation (increase in oxidation state) and reduction (decrease in oxidation state) processes.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "What is a redox reaction?",
+    "exam_mode_answer": "** A redox (reduction-oxidation) reaction is a chemical process involving the simultaneous transfer of electrons between chemical species. It consists of two complementary half-reactions: oxidation, where a species loses electrons (increase in oxidation state), and reduction, where a species gains those electrons (decrease in oxidation state). The substance oxidized is the reducing agent, and the substance reduced is the oxidizing agent.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "State Le Chatelier’s principle and explain its significance.",
+    "exam_mode_answer": "** Le Chatelier's principle states that when a system in dynamic equilibrium is disturbed by a change in concentration, pressure, volume, or temperature, the equilibrium shifts in a direction that partially opposes the applied disturbance to establish a new equilibrium.\\nIts significance is profound in both theoretical and applied chemistry. It allows chemists to predict the qualitative effect of changing conditions on equilibrium systems. Industrially, this principle is strategically used to maximize the yield of desired products, such as in the Haber process for ammonia synthesis, by optimizing pressure, temperature, and reactant concentrations.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "Calculate the number of moles present in 22 g of CO₂.",
+    "exam_mode_answer": "**\\n1. **Step 1: Determine the molar mass of CO₂.**\\nAtomic mass of C = 12 g/mol, O = 16 g/mol.\\nMolar mass of CO₂ = 12 + (2 × 16) = **44 g/mol**.\\n2. **Step 2: Apply the formula for number of moles.**\\nNumber of moles (n) = \\(\\frac{\\text{Given mass}}{\\text{Molar mass}}\\).\\nn = \\(\\frac{22 \\text{ g}}{44 \\text{ g/mol}}\\).\\n3. **Step 3: Calculate and state the answer.**\\nn = **0.5 moles**.\\nTherefore, 22 g of CO₂ contains 0.5 moles of the substance.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "Explain the effect of change in concentration on chemical equilibrium.",
+    "exam_mode_answer": "** According to Le Chatelier's principle, changing the concentration of a reactant or product disturbs the equilibrium. The system responds by shifting to minimize this change.\\n*   **Increasing reactant concentration:** The equilibrium shifts to the right (toward the products) to consume the excess reactants.\\n*   **Decreasing reactant concentration:** The equilibrium shifts to the left (toward the reactants) to produce more of the depleted reactants.\\n*   **Increasing product concentration:** The equilibrium shifts to the left to consume the excess products.\\n*   **Decreasing product concentration:** The equilibrium shifts to the right to form more products.\\nThese shifts occur because the rate of one reaction (forward or reverse) becomes momentarily faster than the other until a new balance is achieved. The equilibrium constant (K) itself remains unchanged at constant temperature.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "Calculate the pH of a 0.01 M HCl solution.",
+    "exam_mode_answer": "**\\n1. **Step 1: Recognize HCl as a strong acid.** It dissociates completely in water: HCl → H⁺ + Cl⁻. Therefore, [H⁺] = [HCl]₀ = 0.01 M.\\n2. **Step 2: Convert concentration to scientific notation for log calculation.**\\n[H⁺] = 0.01 M = \\(1 \\times 10^{-2}\\) M.\\n3. **Step 3: Apply the pH formula.** pH = -log₁₀[H⁺].\\npH = -log₁₀(\\(1 \\times 10^{-2}\\)) = -(-2) = **2**.\\nThus, the pH of a 0.01 M HCl solution is 2.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "State Faraday’s first law of electrolysis.",
+    "exam_mode_answer": "** Faraday’s first law of electrolysis states that the mass (m) of a substance deposited or liberated at an electrode during electrolysis is **directly proportional to the quantity of electric charge (Q)** that passes through the electrolyte.\\nMathematically, it is expressed as: \\( m \\propto Q \\) or \\( m = Z \\cdot Q \\), where \\( Z \\) is the electrochemical equivalent of the substance (mass deposited per unit charge). Since charge \\( Q = I \\times t \\) (current × time), the law can also be written as \\( m \\propto I \\times t \\).",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "Explain electrochemical cells and their working.",
+    "exam_mode_answer": "** An electrochemical cell is a device that converts chemical energy into electrical energy (galvanic/voltaic cell) or uses electrical energy to drive a non-spontaneous chemical reaction (electrolytic cell). A typical galvanic cell consists of two different metal electrodes (anode and cathode) immersed in their respective electrolyte solutions, connected by a salt bridge and an external wire.\\n*   **Working:** At the **anode**, oxidation occurs, releasing electrons into the external circuit. At the **cathode**, reduction occurs, consuming electrons from the circuit. This flow of electrons through the wire constitutes an electric current. The salt bridge maintains electrical neutrality by allowing ion migration. The overall cell reaction is a redox reaction, and the potential difference between the electrodes is the cell voltage.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "How can you determine the rate law of the following reaction? \\n**2NO(g) + O₂(g) → 2NO₂(g)**",
+    "exam_mode_answer": "**\\n1. **Step 1: Write the general rate law.** For the reaction, the rate law is expressed as: Rate = \\( k [NO]^x [O₂]^y \\), where \\( x \\) and \\( y \\) are the orders with respect to NO and O₂, respectively, and must be determined experimentally. They are not necessarily equal to the stoichiometric coefficients (2 and 1).\\n2. **Step 2: Describe the method of initial rates.**\\n*   Conduct a series of experiments where the initial concentrations of reactants are varied.\\n*   In one set, keep [O₂] in large excess (so it remains nearly constant) and vary [NO]. Measure the initial rate for different [NO]. The relationship between rate and [NO] gives the order \\( x \\).\\n*   In another set, keep [NO] in large excess and vary [O₂]. Measure the initial rate for different [O₂]. The relationship gives the order \\( y \\).\\n3. **Step 3: Calculate the orders and the constant.**\\n*   Plot log(rate) vs. log[concentration] for each reactant. The slope of the line gives the order (\\( x \\) or \\( y \\)).\\n*   Alternatively, take ratios of rates from two experiments where only one concentration changes. Solve for \\( x \\) or \\( y \\).\\n*   Once \\( x \\) and \\( y \\) are known, substitute values from any experiment into the rate law to calculate the rate constant \\( k \\), including its units.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "For a certain reaction, a large fraction of molecules has energy more than the threshold energy, yet the rate of reaction is very slow. Why?",
+    "exam_mode_answer": "**\\nA high fraction of molecules possessing energy above the threshold (activation energy, Eₐ) is a necessary but **not sufficient** condition for a fast reaction. According to collision theory, the reaction rate depends on two main factors:\\n1.  **Energy Factor:** The fraction of collisions with energy ≥ Eₐ.\\n2.  **Orientation (Steric) Factor:** The geometric alignment of the colliding molecules at the moment of impact.\\nIn this scenario, even though the energy factor is favorable, the **orientation factor is likely very low**. The reacting molecules must collide with a specific spatial orientation that allows the necessary bonds to break and form. If the probability of a correctly oriented collision (an \"effective collision\") is extremely small, the reaction will proceed slowly despite sufficient energy. This is common in complex molecules or reactions involving specific geometric rearrangements.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "For a general reaction A → B, the plot of concentration of A vs time is given in Fig. \\n**(a) What is the order of the reaction?**\\n**(b) What is the slope of the curve?**\\n**(c) What is the unit of the rate constant?**",
+    "exam_mode_answer": "**\\n**(a)** The graph of [A] vs. time (t) is a straight line with a negative slope. This is characteristic of a **zero-order reaction**. For a zero-order reaction, the rate is independent of the concentration of A, and the integrated rate law is [A]ₜ = [A]₀ - kt.\\n**(b)** The slope of the straight-line curve ( [A] vs. t ) is equal to **-k**, where \\( k \\) is the zero-order rate constant.\\n**(c)** For a zero-order reaction: Rate = \\( k [A]^0 = k \\). Since rate has units of concentration/time (e.g., mol L⁻¹ s⁻¹), the unit of the rate constant \\( k \\) is **mol L⁻¹ s⁻¹** (or M s⁻¹).",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "The reaction between H₂(g) and O₂(g) is highly feasible yet allowing the gasses to stand at room temperature in the same vessel does not lead to the formation of water. Explain. Why does the rate of a reaction increase with a rise in temperature?",
+    "exam_mode_answer": "**\\n**Part 1 (3 marks):** Although the formation of water from H₂ and O₂ is thermodynamically highly spontaneous (large negative ΔG), it does not occur at room temperature because of **kinetic control**. The reaction has a very high **activation energy (Eₐ)**. At room temperature, the average kinetic energy of the gas molecules is insufficient to overcome this energy barrier. Therefore, the probability of a successful, energy-sufficient collision is effectively zero, making the reaction rate imperceptibly slow. An external spark or catalyst is needed to provide the initial energy input to overcome Eₐ and initiate the chain reaction.\\n**Part 2 (2 marks):** The rate of a reaction increases with a rise in temperature primarily due to two reasons:\\n1.  **Increased Kinetic Energy:** As temperature rises, the average kinetic energy of the molecules increases. A much larger fraction of the molecular collisions now possesses energy equal to or greater than the activation energy (Eₐ), leading to a greater number of effective collisions per second.\\n2.  **Increased Collision Frequency:** While this factor is less significant, a temperature increase also slightly increases the frequency of collisions between molecules, further contributing to the increased reaction rate.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "Oxygen is available in plenty in air yet fuels do not burn by themselves at room temperature. Explain.",
+    "exam_mode_answer": "** Combustion of fuels is a highly exothermic reaction but requires a significant initial input of energy known as the **activation energy (Eₐ)**. At room temperature, the thermal energy available to the fuel and oxygen molecules is insufficient to overcome this high activation energy barrier. Therefore, despite the presence of ample oxygen, the reaction cannot initiate spontaneously. An external source like a spark or flame is required to provide the necessary activation energy to start the combustion chain reaction.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "Why can we not determine the order of a chemical reaction by taking a balanced chemical equation into consideration?",
+    "exam_mode_answer": "**\\nThe order of a reaction is an **experimentally determined** quantity that describes the dependence of the reaction rate on the concentration of reactants. It **cannot** be reliably deduced from the stoichiometric coefficients of the balanced equation for several key reasons:\\n1.  **Mechanism vs. Stoichiometry:** Most reactions occur in multiple steps (a reaction mechanism). The overall balanced equation is a summary of the net change, not a description of the actual pathway.\\n2.  **The Rate-Determining Step (RDS):** The slowest step in the mechanism governs the overall rate. The rate law is written based on the molecularity (number of molecules involved) of this slow step, which may involve intermediates not present in the overall equation.\\n3.  **Example:** Consider the reaction:\\n\\( \\text{KClO}_3 + 6\\text{FeSO}_4 + 3\\text{H}_2\\text{SO}_4 \\rightarrow \\text{KCl} + 3\\text{Fe}_2(\\text{SO}_4)_3 + 3\\text{H}_2\\text{O} \\)\\nThe sum of coefficients is 10, but the reaction is experimentally found to be **second order**. This clearly shows the order is not the sum of coefficients. It indicates a multi-step mechanism where the RDS involves only two reacting species.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "What happens to the most probable kinetic energy and the energy of activation with increase in temperature?",
+    "exam_mode_answer": "**\\n*   **Effect on Most Probable Kinetic Energy:** The most probable kinetic energy is the energy possessed by the largest fraction of molecules in a Maxwell-Boltzmann distribution. With an **increase in temperature**, the entire distribution curve shifts to the right and broadens. This means the **most probable kinetic energy increases**. However, because the curve also flattens, the **fraction of molecules** possessing that new, higher most probable energy is actually **smaller** than at the lower temperature.\\n*   **Effect on Activation Energy (Eₐ):** The **activation energy (Eₐ)** is a **fixed characteristic** of a specific reaction pathway. It represents the minimum energy barrier that must be overcome for a reaction to occur. **It does not change with temperature.** What changes with temperature is the **fraction of molecules** that possess kinetic energy equal to or greater than this fixed Eₐ. This fraction increases dramatically with temperature, leading to a higher reaction rate.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "Calculate the concentration of OH⁻ in a fruit juice which contains 2 × 10⁻³ M H₃O⁺ ion. Identify the nature of the solution.",
+    "exam_mode_answer": "**\\n1.  **Step 1: Recall the ionic product of water.** \\( K_w = [H_3O^+][OH^-] = 1.0 \\times 10^{-14} \\) at 25°C.\\n2.  **Step 2: Rearrange to find [OH⁻].** \\( [OH^-] = \\frac{K_w}{[H_3O^+]} \\).\\n3.  **Step 3: Substitute the given value.**\\n\\( [OH^-] = \\frac{1.0 \\times 10^{-14}}{2 \\times 10^{-3}} \\).\\n4.  **Step 4: Calculate.**\\n\\( [OH^-] = 5.0 \\times 10^{-12} \\) M.\\n5.  **Step 5: Determine the nature of the solution.**\\nCompare [H₃O⁺] and [OH⁻]:\\n[H₃O⁺] = \\( 2 \\times 10^{-3} \\) M >> \\( 5.0 \\times 10^{-12} \\) M = [OH⁻].\\nSince \\( [H_3O^+] > [OH^-] \\), the fruit juice is **acidic** in nature.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "Calculate the pH of 0.001M HCl solution.",
+    "exam_mode_answer": "**\\n1.  **Step 1: Recognize HCl as a strong acid.** It dissociates completely: HCl + H₂O → H₃O⁺ + Cl⁻. Therefore, the primary source of [H₃O⁺] is the acid.\\n2.  **Step 2: Calculate [H₃O⁺] from HCl.**\\n[H₃O⁺] from HCl = 0.001 M = \\( 1.0 \\times 10^{-3} \\) M.\\n3.  **Step 3: Consider contribution from water autoionization.** The [H₃O⁺] from water is ~ \\( 1.0 \\times 10^{-7} \\) M. Since \\( 1.0 \\times 10^{-3} \\) >> \\( 1.0 \\times 10^{-7} \\), the contribution from water is negligible (less than 0.01%).\\n4.  **Step 4: Apply pH formula.**\\npH = -log₁₀[H₃O⁺] = -log₁₀(\\( 1.0 \\times 10^{-3} \\)).\\n5.  **Step 5: Calculate and state.**\\npH = -(-3) = **3**.\\nTherefore, the pH of 0.001 M HCl is 3.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "Calculate the pH of 10⁻⁷ M HCl.",
+    "exam_mode_answer": "**\\n1.  **Step 1: Identify the complication.** The acid concentration (10⁻⁷ M) is very low, comparable to the [H₃O⁺] from the autoionization of water (10⁻⁷ M). Therefore, the contribution from water **cannot be neglected**.\\n2.  **Step 2: Consider both sources of H₃O⁺.**\\n*   From HCl: [H₃O⁺]_{HCl} = 10⁻⁷ M.\\n*   From water autoionization: Let [H₃O⁺]_{water} = x M (which also equals [OH⁻] due to stoichiometry).\\nThe total [H₃O⁺] = (10⁻⁷ + x) M.\\n3.  **Step 3: Set up the equation using K_w.**\\n\\( K_w = [H_3O^+][OH^-] = (10^{-7} + x)(x) = 1.0 \\times 10^{-14} \\).\\n4.  **Step 4: Solve the quadratic equation.**\\n\\( x^2 + 10^{-7}x - 10^{-14} = 0 \\).\\nUsing the quadratic formula: \\( x = \\frac{-10^{-7} \\pm \\sqrt{(10^{-7})^2 + 4 \\times 10^{-14}}}{2} \\).\\n\\( x = \\frac{-10^{-7} \\pm \\sqrt{10^{-14} + 4 \\times 10^{-14}}}{2} = \\frac{-10^{-7} \\pm \\sqrt{5 \\times 10^{-14}}}{2} \\).\\n\\( x = \\frac{-10^{-7} \\pm 2.236 \\times 10^{-7}}{2} \\). Taking the positive root:\\n\\( x = \\frac{1.236 \\times 10^{-7}}{2} = 6.18 \\times 10^{-8} \\).\\n5.  **Step 5: Calculate total [H₃O⁺] and pH.**\\nTotal [H₃O⁺] = \\( 10^{-7} + 6.18 \\times 10^{-8} = 1.618 \\times 10^{-7} \\) M.\\npH = -log₁₀(1.618 × 10⁻⁷) = 7 - log₁₀(1.618) ≈ 7 - 0.209 = **6.79**.\\n(Note: A simpler, commonly used approximation is [H₃O⁺] = 10⁻⁷ (from acid) + 10⁻⁷ (from water) = 2 × 10⁻⁷ M, giving pH = -log(2×10⁻⁷) ≈ 6.70).",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "CHEM 101",
+    "question": "Calculate (i) degree of hydrolysis, (ii) the hydrolysis constant, and (iii) pH of 0.1M CH₃COONa solution (pKₐ for CH₃COOH is 4.74).",
+    "exam_mode_answer": "**\\nCH₃COONa is a salt of a weak acid (CH₃COOH) and a strong base (NaOH). It undergoes anionic hydrolysis.\\n1.  **Step 1: Write the hydrolysis reaction and find K_h.**\\nCH₃COO⁻(aq) + H₂O(l) ⇌ CH₃COOH(aq) + OH⁻(aq)\\nHydrolysis constant, \\( K_h = \\frac{K_w}{K_a} \\).\\nGiven pKₐ = 4.74, so \\( K_a = 10^{-4.74} = 1.82 \\times 10^{-5} \\).\\n\\( K_h = \\frac{1.0 \\times 10^{-14}}{1.82 \\times 10^{-5}} = 5.49 \\times 10^{-10} \\).\\n2.  **Step 2: Calculate the degree of hydrolysis (h).**\\nFor a salt of weak acid and strong base, \\( h = \\sqrt{\\frac{K_h}{C}} \\), where C = 0.1 M.\\n\\( h = \\sqrt{\\frac{5.49 \\times 10^{-10}}{0.1}} = \\sqrt{5.49 \\times 10^{-9}} \\).\\n\\( h = 7.41 \\times 10^{-5} \\).\\n3.  **Step 3: Calculate [OH⁻] and then pH.**\\n[OH⁻] = \\( h \\times C = (7.41 \\times 10^{-5}) \\times 0.1 = 7.41 \\times 10^{-6} \\) M.\\npOH = -log₁₀(7.41 × 10⁻⁶) = 6 - log₁₀(7.41) ≈ 6 - 0.87 = 5.13.\\npH = 14 - pOH = 14 - 5.13 = **8.87**.\\n**Summary:**\\n(i) Degree of hydrolysis, \\( h = 7.41 \\times 10^{-5} \\)\\n(ii) Hydrolysis constant, \\( K_h = 5.49 \\times 10^{-10} \\)\\n(iii) pH of 0.1 M CH₃COONa solution ≈ **8.87**",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "COMP 102",
+    "question": "What is a computer program?",
+    "exam_mode_answer": "** A computer program is a set of instructions written in a programming language that tells the computer how to perform a specific task or solve a problem.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "COMP 102",
+    "question": "What is the importance of C programming?",
+    "exam_mode_answer": "** C is important because it is fast, portable, structured, and forms the base for many other languages like C++, Java, and Python.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "COMP 102",
+    "question": "Define algorithm.",
+    "exam_mode_answer": "** An algorithm is a step-by-step procedures or sets of rules designed to solve specific problems or perform tasks efficiently. For instance, a recipe for baking a cake follows a precise algorithm, outlining the sequence of ingredients and steps required to achieve the desired outcome.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "COMP 102",
+    "question": "What is a function?",
+    "exam_mode_answer": "** A function is a self-contained block of statements designed to perform a specific task. It helps in breaking a large program into smaller, manageable parts, improves code reusability, and makes the program easier to understand and debug.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "COMP 102",
+    "question": "What is a variable?",
+    "exam_mode_answer": "** A variable is a named memory location used to store data that can change during program execution.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "COMP 102",
+    "question": "What are keywords in C?",
+    "exam_mode_answer": "** Keywords are reserved words in C with predefined meanings, such as int, if, return, while.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "COMP 102",
+    "question": "What is stdio.h?",
+    "exam_mode_answer": "** stdio.h is a header file that contains declarations for input-output functions like printf() and scanf().",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "COMP 102",
+    "question": "What is a loop?",
+    "exam_mode_answer": "** A loop is a control structure that repeats a block of code until a given condition is satisfied.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "COMP 102",
+    "question": "Define array.",
+    "exam_mode_answer": "** An array is a collection of similar data elements stored in contiguous memory locations.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "COMP 102",
+    "question": "What is a pointer?",
+    "exam_mode_answer": "** A pointer is a variable that stores the address of another variable.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "COMP 102",
+    "question": "Explain structure of a C program.",
+    "exam_mode_answer": "** A C program consists of: Preprocessor directives (#include), Global declarations, main() function, User-defined functions. This structure helps in organized and readable coding.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "COMP 102",
+    "question": "Explain data types in C.",
+    "exam_mode_answer": "** C data types specify the type and size of data. Examples: int – integer, float – decimal values, char – characters, double – large decimal values.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "COMP 102",
+    "question": "Differentiate between for and while loop.",
+    "exam_mode_answer": "** for loop is used when number of iterations is known, while loop is used when iterations are unknown. Initialization inside loop for `for`, before loop for `while`.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "COMP 102",
+    "question": "What is an array? Write its declaration syntax.",
+    "exam_mode_answer": "** An array stores multiple values of same type. Syntax: int a[10];",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "COMP 102",
+    "question": "Explain if–else statement with example.",
+    "exam_mode_answer": "** if–else executes code based on condition. if (x > 0) printf(\"Positive\"); else printf(\"Negative\");",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "COMP 102",
+    "question": "What is recursion?",
+    "exam_mode_answer": "** Recursion is a technique where a function calls itself until a base condition is met.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "COMP 102",
+    "question": "Explain break and continue.",
+    "exam_mode_answer": "** break: exits loop completely, continue: skips current iteration.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "COMP 102",
+    "question": "What is pointer arithmetic?",
+    "exam_mode_answer": "** Pointer arithmetic refers to the operations performed on pointer variables to move through memory locations. In C, when a pointer is incremented or decremented, it moves by the size of the data type it points to, not by one byte. Pointer arithmetic is commonly used to access array elements efficiently, traverse arrays, and manipulate memory locations during program execution.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "COMP 102",
+    "question": "Explain call by value.",
+    "exam_mode_answer": "** Call by value is a method of passing arguments to a function in which a copy of the actual variable is passed to the function. Any changes made to the parameter inside the function do not affect the original variable in the calling function. This method provides data safety, as the original data remains unchanged after function execution.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "COMP 102",
+    "question": "What is structure in C?",
+    "exam_mode_answer": "** A structure in C is a user-defined data type that allows grouping of different data types under a single name. It is used to store related information such as student records or employee details. Structures help in organizing complex data and improve program readability and data management.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "COMP 102",
+    "question": "Explain features of C programming language.",
+    "exam_mode_answer": "** The main features of C are: Simple and Efficient – Easy syntax and fast execution, Structured Language – Uses functions and blocks, Portable – Programs can run on different machines, Low-level access – Supports pointers and memory management, Extensible – New functions can be added. These features make C suitable for system and application programming.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "COMP 102",
+    "question": "Explain different operators in C with examples.",
+    "exam_mode_answer": "** Arithmetic Operators: + - * / %, c = a + b; Relational Operators: < > <= >= == !=; Logical Operators: && || !; Assignment Operators: = += -=; Bitwise Operators: & | ^.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "COMP 102",
+    "question": "Write a C program to find sum of two numbers.",
+    "exam_mode_answer": "** #include <stdio.h> int main() { int a, b, sum; printf(\"Enter two numbers: \"); scanf(\"%d %d\", &a, &b); sum = a + b; printf(\"Sum = %d\", sum); return 0; } The program takes two inputs, adds them, and displays the result.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "COMP 102",
+    "question": "Explain functions in C with syntax and example.",
+    "exam_mode_answer": "** A function divides program into smaller reusable modules. Syntax: return_type function_name(parameters); Example: int add(int x, int y) { return x + y; }",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "COMP 102",
+    "question": "Write a C program to find factorial using recursion.",
+    "exam_mode_answer": "** #include <stdio.h> int fact(int n) { if (n == 0) return 1; else return n * fact(n - 1); } int main() { int n; printf(\"Enter number: \"); scanf(\"%d\", &n); printf(\"Factorial = %d\", fact(n)); return 0; } Function calls itself until n becomes zero (base condition).",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "COMP 102",
+    "question": "Explain arrays with example program.",
+    "exam_mode_answer": "** An array stores multiple values of same data type. int a[5] = {1,2,3,4,5}; Example program to print array: for(int i=0;i<5;i++) printf(\"%d \", a[i]);",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "COMP 102",
+    "question": "Explain pointers with diagram and example.",
+    "exam_mode_answer": "** A pointer stores address of variable. int x = 10; int *p = &x; p stores address of x, and *p accesses value.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "COMP 102",
+    "question": "Write a C program to swap two numbers using pointers.",
+    "exam_mode_answer": "** #include <stdio.h> void swap(int *a, int *b) { int temp = *a; *a = *b; *b = temp; } int main() { int x = 5, y = 10; swap(&x, &y); printf(\"x=%d y=%d\", x, y); return 0; }",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "COMP 102",
+    "question": "Explain structures with example.",
+    "exam_mode_answer": "** Structures allow grouping different data types. struct student { int roll; char name[20]; }; Used to store complex records.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "COMP 102",
+    "question": "Write a C program using structure to store student data.",
+    "exam_mode_answer": "** #include <stdio.h> struct student { int roll; float marks; }; int main() { struct student s; s.roll = 1; s.marks = 85.5; printf(\"Roll: %d Marks: %.2f\", s.roll, s.marks); return 0; }",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "MATH 101",
+    "question": "Verify Mean Value Theorem for f(x) = x3, [-1, 8]",
+    "exam_mode_answer": "** Here f(x) is defined in [-1,8] i. e. f is continuous in closed interval [-1, 8]. And f'(x) = -r is not defined in x = 0 3×3 i.e. f is not differentiable in each point of open interval (-1,8) Hence the function does not satisfy the hypothesis of MVT. So we cannot guaranteed that there will be a c such that f'(c)=f(b)-f(a)/b-a",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "MATH 101",
+    "question": "Let T : R2 -> R be a linear transformation with T(1,1)=3,T(0,1) =- 2,",
+    "exam_mode_answer": "** Let (1,1/2)=x(1,1)+y(0,1) (1,1/2) =(+y) x=1,y =- 1/2 .. T(1,1/2)=T[1(1,1)+(-1/2)(0,1)] = 1T(1,1)+(-1/2)T(0,1) = 4",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "MATH 101",
+    "question": "Evaluate  ∫3x²dx",
+    "exam_mode_answer": "** = x^3 + C",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "MATH 101",
+    "question": "State Rolle’s Theorem.",
+    "exam_mode_answer": "** If a function is continuous on [a, b], differentiable on (a, b), and f(a) = f(b), then there exists at least one point c such that f′(c) = 0.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "MATH 101",
+    "question": "Define eigenvalue.",
+    "exam_mode_answer": "** A scalar λ is called an eigenvalue of matrix A if: AX=λX for some non-zero vector X",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "MATH 101",
+    "question": "Solve the differential equation: dy/dx = 3x²",
+    "exam_mode_answer": "** dy = 3x² dx Integrate both sides: y = x³ + C Hence, the solution is y = x³ + C.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "MATH 101",
+    "question": "Find the area bounded by the curve  y=x², x=0, x=3",
+    "exam_mode_answer": "** Area=∫ba ydx =∫03 x² dx = [x3 /3]03 =27/3−0=9 Answer: 9 square units",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "MATH 101",
+    "question": "Find the derivative of y = x³ − 5x² + 4x − 7.",
+    "exam_mode_answer": "** Given y = x³ − 5x² + 4x − 7 Differentiate term by term: dy/dx = 3x² − 10x + 4 Hence, the derivative of the given function is 3x² − 10x + 4.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "MATH 101",
+    "question": "Evaluate the limit: lim (x→2) (x² + 4x − 12)/(x − 2)",
+    "exam_mode_answer": "** Factor the numerator: x² + 4x − 12 = (x − 2)(x + 6) Cancel (x − 2): Limit = x + 6 Substitute x = 2: Limit = 8.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "MATH 101",
+    "question": "State Mean Value Theorem.Verify Mean Value Theorem for f(x) = x2 on [1,4]",
+    "exam_mode_answer": "** If a function is continuous on [a, b] and differentiable on (a, b), then there exists at least one point c such that f′(c) = [f(b) − f(a)] / (b − a). Since f(x) = x2 is a polynomial function, it is continuous on [1,4]. Polynomial functions are differentiable everywhere, hence differentiable on (1,4). f'(x) = 2x Applying mean value theorem, f'(c)=f(b)-f(a)/b-a = f(4)-f(1)/4-1 =16-(⅓) =15/3 =5 Now, 2c=5⇒c=2.5",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "MATH 101",
+    "question": "Find maxima and minima of y=x³−6x²+9x",
+    "exam_mode_answer": "** dy/dx=3x²−12x+9 For critical point, 3x²−12x+9=0 x²−4x+3=0 (x−1)(x−3)=0 x=1,x=3 ⇒x=1,3 Second derivative: d²y/dx²=6x−12 At x=1 d²y/dx²=6(1)-12 =- 6< 0 Hence,maximum at x=1 At x=3 d²y/dx²=6(3)-12 =6> 0 Hence,maximum at x=3",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "ENGG 111",
+    "question": "What is an equivalent force system?",
+    "exam_mode_answer": "** An equivalent force system is a set of forces that produces the same external effect, such as motion or equilibrium, as another force system acting on a body.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "ENGG 111",
+    "question": "What is equilibrium in engineering mechanics?",
+    "exam_mode_answer": "** Equilibrium is the condition where the sum of all forces and moments acting on a body is zero, resulting in no acceleration.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "ENGG 111",
+    "question": "Define friction.",
+    "exam_mode_answer": "** Friction is a resistive force that develops between two surfaces in contact and opposes their relative motion or tendency of motion.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "ENGG 111",
+    "question": "What is the center of gravity?",
+    "exam_mode_answer": "** The center of gravity is the point through which the total weight of a body is considered to act, regardless of its orientation.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "ENGG 111",
+    "question": "State Newton’s second law of motion.",
+    "exam_mode_answer": "** Newton’s second law states that the force acting on a body is equal to the product of its mass and acceleration.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "ENGG 111",
+    "question": "Define bearing capacity of soil.",
+    "exam_mode_answer": "** Bearing capacity is the maximum load per unit area that soil can support without failure.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "ENGG 111",
+    "question": "What is work in mechanics?",
+    "exam_mode_answer": "** Work is said to be done when a force causes displacement in the direction of the applied force.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "ENGG 111",
+    "question": "What is GIS?",
+    "exam_mode_answer": "** Geographic Information System (GIS) is a computer-based system used to store, analyze, and display spatial data.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "ENGG 111",
+    "question": "What is a pump?",
+    "exam_mode_answer": "** A pump is a mechanical device used to move fluids by increasing their pressure or kinetic energy.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "ENGG 111",
+    "question": "Explain Hooke’s law.",
+    "exam_mode_answer": "** Hooke’s law states that within the elastic limit, stress is directly proportional to strain.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "ENGG 111",
+    "question": "Define stress and strain",
+    "exam_mode_answer": "** Stress is the internal resisting force developed per unit area within a material when subjected to an external load. Strain is the ratio of change in dimension to the original dimension of a material under stress.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "ENGG 111",
+    "question": "What are building materials and foundation?",
+    "exam_mode_answer": "** Building materials are materials such as bricks, cement, steel, and concrete used in the construction of structures. A foundation is the lowest part of a structure that transfers the load of the building safely to the ground.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "ENGG 111",
+    "question": "What is surveying? Explain chain surveying",
+    "exam_mode_answer": "** Surveying is the science of measuring distances, angles, and elevations to determine the relative positions of points on Earth.Define bearing capacity of soil. [2 marks] A: Bearing capacity is the maximum load per unit area that soil can support without failure.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "ENGG 111",
+    "question": "What is compass surveying?",
+    "exam_mode_answer": "** Compass surveying uses a magnetic compass to measure horizontal angles and determine directions.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "ENGG 111",
+    "question": "Explain equilibrium of forces.",
+    "exam_mode_answer": "** Equilibrium of forces refers to the condition in which the resultant of all forces acting on a body is zero. When a body is in equilibrium, it remains either at rest or moves with uniform velocity. This condition is essential in engineering structures to ensure stability and safety.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "ENGG 111",
+    "question": "Define stress and strain.",
+    "exam_mode_answer": "** Stress is defined as the internal resisting force per unit area developed in a material when an external force is applied. Strain is the ratio of change in dimension to the original dimension of the material. Both stress and strain are fundamental concepts used to study material behavior under load.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "ENGG 111",
+    "question": "Explain Hooke’s law.",
+    "exam_mode_answer": "** Hooke’s law states that within the elastic limit of a material, stress is directly proportional to strain. This relationship is represented by a straight line in the stress–strain diagram. The constant of proportionality is known as Young’s modulus.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "ENGG 111",
+    "question": "Explain friction. Calculate stress when a force of 10 kN acts on an area of 0.002 m².",
+    "exam_mode_answer": "** Friction is the resisting force that opposes the relative motion between two surfaces in contact. It acts in the opposite direction of motion or tendency of motion. Friction plays an important role in machines, vehicles, and daily life applications. Given force = 10 kN = 10,000 N and area = 0.002 m². Stress is calculated by dividing force by area. Stress = 10,000 / 0.002 = 5 × 10⁶ N/m².",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "ENGG 111",
+    "question": "Define Reynolds number. Calculate pressure when force is 500 N acting over 0.5 m².",
+    "exam_mode_answer": "** Reynolds number is a dimensionless quantity used to predict the nature of fluid flow. It indicates whether the flow is laminar or turbulent. It depends on fluid velocity, density, viscosity, and characteristic length. Calculate pressure when force is 500 N acting over 0.5 m². Pressure is defined as force per unit area. Pressure = 500 / 0.5. Therefore, pressure is 1000 N/m².",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "ENGG 111",
+    "question": "Explain types of Shallow Foundations",
+    "exam_mode_answer": "** Shallow foundations transfer building loads to the soil near the surface and are used when soil near the ground is strong enough to support the structure. The main types include: Spread (Isolated) Footing, Combined Footing, Continuous (Wall) Footing, Grillage Foundation, Raft (Mat) Foundation, Strip Footing.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  },
+  {
+    "subject": "PHYS 101",
+    "question": "Define velocity.",
+    "exam_mode_answer": "** Velocity is the rate of change of displacement with respect to time.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "PHYS 101",
+    "question": "What is SI unit of force?",
+    "exam_mode_answer": "** The SI unit of force is newton (N).",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "PHYS 101",
+    "question": "Define wavelength.",
+    "exam_mode_answer": "** Wavelength is the distance between two successive crests or troughs of a wave.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "PHYS 101",
+    "question": "What is Young’s modulus?",
+    "exam_mode_answer": "** Young’s modulus is the ratio of longitudinal stress to longitudinal strain.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 1
+  },
+  {
+    "subject": "PHYS 101",
+    "question": "State Newton’s second law of motion. Define moment of inertia.",
+    "exam_mode_answer": "** Newton’s second law states that the rate of change of momentum of a body is directly proportional to the applied force and occurs in the direction of the force. Moment of inertia is the rotational analogue of mass and measures the resistance offered by a body to change in its rotational motion.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "PHYS 101",
+    "question": "What is interference of light?Define coefficient of viscosity.",
+    "exam_mode_answer": "** Interference is the phenomenon of redistribution of light intensity due to superposition of two coherent light waves. Coefficient of viscosity is the measure of internal resistance offered by a fluid to its flow.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 2
+  },
+  {
+    "subject": "PHYS 101",
+    "question": "Describe simple harmonic motion.",
+    "exam_mode_answer": "** Simple harmonic motion is a type of periodic motion in which the restoring force is directly proportional to the displacement and acts towards the mean position. The motion is characterized by constant frequency and amplitude. Examples include oscillation of a spring and motion of a pendulum.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "PHYS 101",
+    "question": "Explain work-energy theorem.",
+    "exam_mode_answer": "** The work-energy theorem states that the total work done by all forces acting on a body is equal to the change in its kinetic energy. This theorem is applicable to both constant and variable forces. It is widely used to solve problems related to motion.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "PHYS 101",
+    "question": "A body of mass 4 kg moves with a velocity of 10 m/s. Calculate its kinetic energy.",
+    "exam_mode_answer": "** Given mass m = 4 kg and velocity v = 10 m/s. Kinetic energy is given by the formula KE = ½mv². Substituting the values, KE = ½ × 4 × 10². KE = 2 × 100 = 200 J. Therefore, the kinetic energy of the body is 200 joules.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "PHYS 101",
+    "question": "Calculate the moment of inertia of a solid sphere of mass 5 kg and radius 0.4 m about its diameter.",
+    "exam_mode_answer": "** The formula for moment of inertia of a solid sphere about its diameter is I = 2/5 MR². Given M = 5 kg and R = 0.4 m. Substituting the values, I = 2/5 × 5 × (0.4)². I = 2 × 0.16 = 0.32 kg m². Hence, the moment of inertia of the sphere is 0.32 kg m².",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "PHYS 101",
+    "question": "A wave has frequency 600 Hz and wavelength 0.5 m. Find the velocity of the wave.",
+    "exam_mode_answer": "** Given frequency f = 600 Hz and wavelength λ = 0.5 m. Wave velocity is given by v = fλ. Substituting the values, v = 600 × 0.5. v = 300 m/s. Therefore, the velocity of the wave is 300 m/s.",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 3
+  },
+  {
+    "subject": "PHYS 101",
+    "question": "A current of 50A is supplied in a slab of copper 0.5cm thick and 2 cm wide is placed in a magnetic field B of 1.5 T. The magnetic field is perpendicular to the plane of the slab and to the current .The free electron concentration in copper is 8.4 × 1028 electrons/m3? . What will be the magnitude of the Hall voltage across the width of the slab?",
+    "exam_mode_answer": "** Given,Current, I=50A, Thickness of copper slab, d=0.5cm=0.005m, Width of the slab, w=2cm=0.02m, Magnetic field, B=1.5T, A=d×w=0.005m×0.02m=1.0×10−4m2. Hall Voltage (VH)​=neABI =1.5 × 50 /8.4×1028×1.6×10−19×1.0×10−4 =55.8μV",
+    "guided_mode_answer": "",
+    "context": "",
+    "marks": 5
+  }
+]
