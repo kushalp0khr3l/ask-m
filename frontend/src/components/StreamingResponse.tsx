@@ -45,12 +45,18 @@ export function StreamingResponse({ query, content, isComplete, status, onInfere
     zap: Zap
   };
 
-  // Pre-process content to handle common LaTeX delimiter issues
+  // Pre-process content to handle common LaTeX delimiter issues and "math in backticks"
   const processedSummary = (content.summary || '')
     .replace(/\\\[/g, '$$$$')
     .replace(/\\\]/g, '$$$$')
     .replace(/\\\(/g, '$$')
     .replace(/\\\)/g, '$$');
+
+  const isMathy = (text: string) => {
+    const mathSymbols = /[√²³⁴⁵⁶⁷⁸⁹⁰∞→λθπΣΔ∇∂∫≈≠≤≥±×÷^]/;
+    const mathOperators = /[+\-*/=<>]{2,}/; // Multiple operators often indicate an equation
+    return mathSymbols.test(text) || mathOperators.test(text);
+  };
 
   return (
     <div className="max-w-4xl mx-auto px-4 md:px-8 py-8 md:py-12 space-y-4 md:space-y-6 text-white font-sans">
@@ -112,30 +118,34 @@ export function StreamingResponse({ query, content, isComplete, status, onInfere
             rehypePlugins={[rehypeKatex]}
             components={{
               // Premium styling for markdown elements
-              strong: ({ node, ...props }) => <span className="text-white font-bold" {...props} />,
+              strong: ({ node, ...prefix }) => <span className="text-white font-bold" {...prefix} />,
               p: ({ node, ...props }) => <p className="mb-4 last:mb-0" {...props} />,
               ul: ({ node, ...props }) => <ul className="list-disc list-inside space-y-2 mb-4" {...props} />,
               ol: ({ node, ...props }) => <ol className="list-decimal list-inside space-y-2 mb-4" {...props} />,
               li: ({ node, ...props }) => <li className="marker:text-[#A0A0A0]" {...props} />,
               code: ({ node, inline, ...props }: any) => {
                 const content = String(props.children).replace(/\n$/, '');
-                const isShort = content.length < 60 && !content.includes('\n');
+                const isShort = content.length < 100 && !content.includes('\n');
+                const mathy = isMathy(content);
 
                 if (inline) {
+                  if (mathy) {
+                    return <span className="text-slate-100 font-sans italic mx-0.5" {...props} />;
+                  }
                   return <code className="bg-[#2D2E30] px-1.5 py-0.5 rounded text-amber-400 text-sm md:text-base font-mono" {...props} />;
                 }
 
                 if (isShort) {
                   return (
                     <span className="inline-block my-1 mx-1">
-                      <code className="bg-[#0D0D0E] px-3 py-1 rounded-lg border border-[#2D2E30] text-amber-200 text-sm md:text-base font-mono" {...props} />
+                      <code className={`${mathy ? 'text-slate-100 font-sans italic border-none bg-transparent' : 'bg-[#0D0D0E] text-amber-200 font-mono border border-[#2D2E30]'} px-3 py-1 rounded-lg text-sm md:text-base`} {...props} />
                     </span>
                   );
                 }
 
                 return (
                   <pre className="bg-[#0D0D0E] p-4 rounded-xl border border-[#2D2E30] overflow-x-auto my-4 w-full">
-                    <code className="text-sm md:text-base text-amber-200 font-mono" {...props} />
+                    <code className={`${mathy ? 'text-slate-100 font-sans' : 'text-amber-200 font-mono'} text-sm md:text-base`} {...props} />
                   </pre>
                 );
               }
