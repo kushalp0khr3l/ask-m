@@ -1,5 +1,4 @@
 import json
-import random
 from pathlib import Path
 from .matcher import overlap_score, keyword_boost
 from .normalizer import normalize
@@ -87,15 +86,3 @@ class StaticCache:
             return best, best_score
 
         return None, 0.0
-
-    def random_samples(self, n: int = 4):
-        """Returns a list of random unique questions from the cache."""
-        if not self.items:
-            return []
-        
-        # Extract unique questions
-        questions = list(set(item["question"] for item in self.items if "question" in item))
-        
-        # Sample n items
-        sample_size = min(n, len(questions))
-        return random.sample(questions, sample_size)

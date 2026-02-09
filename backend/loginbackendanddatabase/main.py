@@ -272,13 +272,5 @@ async def add_message(chat_id: str, payload: dict, authorization: Annotated[str 
     
     return response.data[0]
 
-@app.get("/cache/samples")
-async def get_cache_samples():
-    """Returns random sample questions from the static cache for the UI."""
-    cache = app.state.static_cache
-    if not cache:
-        return []
-    return cache.random_samples(4)
-
 # Include AI Routes
 app.include_router(ai_router)
