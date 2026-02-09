@@ -122,7 +122,7 @@ export default function App() {
     handleSearch(query, activeSearchMode);
   };
 
-  const handleSearch = async (query: string, mode: 'exam' | 'guided' = 'guided') => {
+  const handleSearch = async (query: string, mode: 'exam' | 'guided' = activeSearchMode) => {
     setIsSearching(true);
     setActiveSearchMode(mode);
 

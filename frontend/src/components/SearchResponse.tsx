@@ -131,7 +131,7 @@ export function SearchResponse({ chatId, query, mode, forceInference, onAnswerCo
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
-  }, [query]); // Only re-fetch when query changes, not mode
+  }, [query, mode]); // Re-fetch when query OR mode changes
 
   const handleEnableInference = () => {
     fetchResponse(true);

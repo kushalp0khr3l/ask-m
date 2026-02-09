@@ -43,7 +43,7 @@ async def answer_question(payload: QuestionPayload, request: Request):
         if answer:
             return {
                 "status": "cache_exact",
-                "message": "Exact exam question found in cache.",
+                "message": f"Exact exam question found in cache (delivered in {payload.mode} mode).",
                 "input_question": payload.question,
                 "matched_question": cached["question"],
                 "subject": cached["subject"],
@@ -54,20 +54,44 @@ async def answer_question(payload: QuestionPayload, request: Request):
             }
 
     # ==================================================
-    # CASE 2: SIMILAR MATCH
+    # CASE 2: SIMILAR MATCH (OR MISSING MODE IN CACHE)
     # ==================================================
     if cached and score >= 0.60:
+        answer_for_mode = (
+            cached.get("guided_mode_answer")
+            if payload.mode == "guided"
+            else cached.get("exam_mode_answer")
+        )
+
         if not payload.enable_inference:
+            # If we don't have the answer for THIS mode, tell them
+            if not answer_for_mode:
+                return {
+                    "status": "cache_similar",
+                    "message": f"Found a match but it currently only has an answer for {'Guided' if payload.mode == 'exam' else 'Exam'} mode. Enable inference for a tailored {payload.mode} answer.",
+                    "input_question": payload.question,
+                    "matched_question": cached["question"],
+                    "subject": cached["subject"],
+                    "marks": cached["marks"],
+                    "confidence": round(score, 2),
+                    "mode_used": payload.mode,
+                    "answer": cached.get("exam_mode_answer") or cached.get("guided_mode_answer"),
+                    "next_step": {
+                        "action": "enable_inference",
+                        "hint": "Resubmit with enable_inference=true"
+                    }
+                }
+
             return {
                 "status": "cache_similar",
-                "message": "Similar exam question found. Enable inference for exact answer.",
+                "message": f"Similar exam question found in {payload.mode} mode.",
                 "input_question": payload.question,
                 "matched_question": cached["question"],
                 "subject": cached["subject"],
                 "marks": cached["marks"],
                 "confidence": round(score, 2),
                 "mode_used": payload.mode,
-                "answer": cached.get("exam_mode_answer") or cached.get("guided_mode_answer"),
+                "answer": answer_for_mode,
                 "next_step": {
                     "action": "enable_inference",
                     "hint": "Resubmit with enable_inference=true"
