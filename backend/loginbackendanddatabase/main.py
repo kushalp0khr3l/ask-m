@@ -34,12 +34,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from fastapi.responses import JSONResponse
+
 @app.exception_handler(Exception)
 async def global_exception_handler(request, exc):
     """
     Catch-all exception handler to ensure we always return JSON with CORS headers
     instead of an opaque Vercel 500 error page.
     """
+    if isinstance(exc, HTTPException):
+        # Re-raise or return the specific HTTPException response
+        return JSONResponse(
+            status_code=exc.status_code,
+            content={"detail": exc.detail},
+        )
+        
     print(f"GLOBAL ERROR: {type(exc).__name__}: {str(exc)}")
     import traceback
     traceback.print_exc()
@@ -47,8 +56,6 @@ async def global_exception_handler(request, exc):
         status_code=500,
         content={"detail": "Internal Server Error", "message": str(exc)},
     )
-
-from fastapi.responses import JSONResponse
 
 # Supabase Configuration
 SUPABASE_URL = os.environ.get("SUPABASE_URL")
