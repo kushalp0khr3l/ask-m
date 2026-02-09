@@ -68,11 +68,11 @@ export function StreamingResponse({ query, content, isComplete, status, onInfere
   };
 
   const processedSummary = (content.summary || '')
-    // Handle double-escaped or single-escaped delimiters from LLM output
-    .replace(/\\+(\[)/g, '$$$$')
-    .replace(/\\+(\])/g, '$$$$')
-    .replace(/\\+(\()/g, '$$')
-    .replace(/\\+(\))/g, '$$')
+    // Standardize delimiters to help remark-math detect them reliably
+    .replace(/\\+\[/g, '$$$$')
+    .replace(/\\+\]/g, '$$$$')
+    .replace(/\\+\(/g, '$$')
+    .replace(/\\+\)/g, '$$')
     // Handle common function text to math
     .replace(/sqrt\(([^)]+)\)/g, '\\sqrt{$1}')
     .replace(/√(\d+|\w+|{[^}]+})/g, '\\sqrt{$1}')
@@ -134,7 +134,7 @@ export function StreamingResponse({ query, content, isComplete, status, onInfere
         )}
 
         {/* Markdown Content */}
-        <div className="prose prose-invert prose-sm md:prose-base max-w-none text-white/90 leading-relaxed mathjax-render">
+        <div className="prose prose-invert prose-sm md:prose-base max-w-none text-white/90 leading-relaxed tex2jax_process">
           <ReactMarkdown
             remarkPlugins={[remarkMath]}
             rehypePlugins={[rehypeMathjax]}
