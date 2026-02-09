@@ -15,22 +15,16 @@ from fastapi.middleware.cors import CORSMiddleware
 
 # AI Orchestrator Imports
 from ai_orchestrator.api.routes import router as ai_router
-from ai_orchestrator.cache.static_cache import StaticCache
 
 app = FastAPI()
 
-@app.on_event("startup")
-def startup_event():
-    print("DEBUG: Starting AI Orchestrator Cache...")
-    cache = StaticCache()
-    cache.load()
-    app.state.static_cache = cache
-    print("DEBUG: AI Orchestrator Ready")
+# AI Cache is now handled via singleton lazy-loading in ai_orchestrator/cache/static_cache.py
 
 # Enable CORS (Cross-Origin Resource Sharing)
+# In production, ALLOWED_ORIGINS should be set to your frontend URL.
+# If not set, we default to "*" for flexibility, but must disable allow_credentials.
 ALLOWED_ORIGINS = os.environ.get("ALLOWED_ORIGINS", "*").split(",")
-# FastAPI/Browser security rule: allow_credentials cannot be True if allow_origins is ["*"]
-ALLOW_CREDENTIALS = "*" not in ALLOWED_ORIGINS
+ALLOW_CREDENTIALS = "*" not in ALLOWED_ORIGINS and len(ALLOWED_ORIGINS) > 0
 
 app.add_middleware(
     CORSMiddleware,
@@ -39,6 +33,22 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request, exc):
+    """
+    Catch-all exception handler to ensure we always return JSON with CORS headers
+    instead of an opaque Vercel 500 error page.
+    """
+    print(f"GLOBAL ERROR: {type(exc).__name__}: {str(exc)}")
+    import traceback
+    traceback.print_exc()
+    return JSONResponse(
+        status_code=500,
+        content={"detail": "Internal Server Error", "message": str(exc)},
+    )
+
+from fastapi.responses import JSONResponse
 
 # Supabase Configuration
 SUPABASE_URL = os.environ.get("SUPABASE_URL")

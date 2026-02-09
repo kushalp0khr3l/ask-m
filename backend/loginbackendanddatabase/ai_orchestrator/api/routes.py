@@ -1,5 +1,5 @@
-from fastapi import APIRouter, Request
 from .schemas import QuestionPayload
+from .static_cache import cache_instance
 from ..inference.client import run_inference
 from ..utils.question_utils import is_compound_question
 
@@ -7,7 +7,7 @@ router = APIRouter()
 
 @router.post("/answer")
 async def answer_question(payload: QuestionPayload, request: Request):
-    static_cache = request.app.state.static_cache
+    static_cache = cache_instance
 
     cached, score = static_cache.find(
         payload.question,
