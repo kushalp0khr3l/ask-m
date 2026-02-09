@@ -16,6 +16,7 @@ export default function App() {
   const [messages, setMessages] = useState<any[]>([]);
   const [activeSearchMode, setActiveSearchMode] = useState<'exam' | 'guided'>('guided');
   const [isSearching, setIsSearching] = useState(false);
+  const [forcedInferenceQuery, setForcedInferenceQuery] = useState<string | null>(null);
   const [showProfileSettings, setShowProfileSettings] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null); // null means loading
@@ -116,15 +117,21 @@ export default function App() {
     setMessages([]);
   };
 
+  const handleInference = (query: string) => {
+    setForcedInferenceQuery(query);
+    handleSearch(query, activeSearchMode);
+  };
+
   const handleSearch = async (query: string, mode: 'exam' | 'guided' = 'guided') => {
     setIsSearching(true);
-    setActiveSearchMode(mode); // Set mode FIRST, before any async operations
+    setActiveSearchMode(mode);
 
     try {
       let chatId = activeChatId;
       const session = (await supabase.auth.getSession()).data.session;
       if (!session) {
         setIsSearching(false);
+        setForcedInferenceQuery(null);
         return;
       }
 
@@ -153,27 +160,30 @@ export default function App() {
         }
       }
 
-      // 2. Add user message locally and to DB
-      const userMsg = { role: 'user', content: query };
-      setMessages(prev => [...prev, userMsg]);
+      // 2. Add user message locally and to DB (Skip if it's a forced inference from history)
+      if (!forcedInferenceQuery) {
+        const userMsg = { role: 'user', content: query };
+        setMessages(prev => [...prev, userMsg]);
 
-      if (chatId) {
-        try {
-          await fetch(`${backendUrl}/chats/${chatId}/messages`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${session.access_token}`,
-            },
-            body: JSON.stringify(userMsg),
-          });
-        } catch (err) {
-          console.error('Failed to save user message:', err);
+        if (chatId) {
+          try {
+            await fetch(`${backendUrl}/chats/${chatId}/messages`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${session.access_token}`,
+              },
+              body: JSON.stringify(userMsg),
+            });
+          } catch (err) {
+            console.error('Failed to save user message:', err);
+          }
         }
       }
     } catch (err) {
       console.error('Search failed:', err);
       setIsSearching(false);
+      setForcedInferenceQuery(null);
     }
   };
 
@@ -258,6 +268,9 @@ export default function App() {
           activeSearchMode={activeSearchMode}
           onQuickStart={handleSearch}
           setIsSearching={setIsSearching}
+          onInference={handleInference}
+          forcedInference={forcedInferenceQuery}
+          onInferenceComplete={() => setForcedInferenceQuery(null)}
         />
 
         <SearchInput

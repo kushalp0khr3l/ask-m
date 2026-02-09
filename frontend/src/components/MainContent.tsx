@@ -11,9 +11,12 @@ interface MainContentProps {
   activeSearchMode: 'exam' | 'guided';
   onQuickStart: (query: string) => void;
   setIsSearching: React.Dispatch<React.SetStateAction<boolean>>;
+  onInference?: (query: string) => void;
+  forcedInference?: string | null;
+  onInferenceComplete?: () => void;
 }
 
-export function MainContent({ chatId, messages, setMessages, activeSearchMode, onQuickStart, setIsSearching }: MainContentProps) {
+export function MainContent({ chatId, messages, setMessages, activeSearchMode, onQuickStart, setIsSearching, onInference, forcedInference, onInferenceComplete }: MainContentProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [showScrollButton, setShowScrollButton] = useState(false);
@@ -26,7 +29,6 @@ export function MainContent({ chatId, messages, setMessages, activeSearchMode, o
     if (!scrollContainerRef.current) return;
 
     const { scrollTop, scrollHeight, clientHeight } = scrollContainerRef.current;
-    // Show button if we are more than 100px away from bottom
     const isDistanceFromBottom = scrollHeight - scrollTop - clientHeight > 100;
     setShowScrollButton(isDistanceFromBottom);
   };
@@ -70,21 +72,22 @@ export function MainContent({ chatId, messages, setMessages, activeSearchMode, o
                   confidence={msg.metadata?.confidence}
                   message={msg.metadata?.message}
                   matchedQuestion={msg.metadata?.matched_question}
+                  onInference={() => onInference?.(messages[index - 1]?.content || '')}
                 />
               </div>
             );
           })}
 
           {/* AI Generation Layer (Visible when waiting for response) */}
-          {messages.length > 0 && messages[messages.length - 1].role === 'user' && (
+          {messages.length > 0 && (messages[messages.length - 1].role === 'user' || forcedInference) && (
             <SearchResponse
               chatId={chatId}
-              query={messages[messages.length - 1].content}
+              query={forcedInference || messages[messages.length - 1].content}
               mode={activeSearchMode}
+              forceInference={!!forcedInference}
               onAnswerComplete={(answerData) => {
-                // Safety check: only add if we haven't already added an assistant message for this
                 setMessages(prev => {
-                  if (prev.length > 0 && prev[prev.length - 1].role === 'assistant') return prev;
+                  if (prev.length > 0 && prev[prev.length - 1].role === 'assistant' && !forcedInference) return prev;
                   return [...prev, {
                     role: 'assistant',
                     content: answerData.summary,
@@ -92,6 +95,7 @@ export function MainContent({ chatId, messages, setMessages, activeSearchMode, o
                   }];
                 });
                 setIsSearching(false);
+                onInferenceComplete?.();
               }}
             />
           )}

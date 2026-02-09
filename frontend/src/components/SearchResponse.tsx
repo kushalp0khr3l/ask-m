@@ -8,6 +8,7 @@ interface SearchResponseProps {
   chatId: string | null;
   query: string;
   mode: 'exam' | 'guided';
+  forceInference?: boolean;
   onAnswerComplete?: (data: any) => void;
 }
 
@@ -16,7 +17,7 @@ const generateResponse = (query: string) => {
   return {};
 };
 
-export function SearchResponse({ chatId, query, mode, onAnswerComplete }: SearchResponseProps) {
+export function SearchResponse({ chatId, query, mode, forceInference, onAnswerComplete }: SearchResponseProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [isStreaming, setIsStreaming] = useState(false);
   const [responseData, setResponseData] = useState<any>(null);
@@ -126,7 +127,7 @@ export function SearchResponse({ chatId, query, mode, onAnswerComplete }: Search
   };
 
   useEffect(() => {
-    fetchResponse();
+    fetchResponse(forceInference);
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
