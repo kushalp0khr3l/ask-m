@@ -35,7 +35,7 @@ export function MainContent({ chatId, messages, setMessages, activeSearchMode, o
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <WelcomeScreen />
+            <WelcomeScreen onQuickStart={onQuickStart} />
           </motion.div>
         ) : (
           <div className="space-y-4 md:space-y-6">
