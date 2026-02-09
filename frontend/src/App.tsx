@@ -254,6 +254,7 @@ export default function App() {
           messages={messages}
           setMessages={setMessages}
           activeSearchMode={activeSearchMode}
+          onQuickStart={handleSearch}
           setIsSearching={setIsSearching}
         />
 

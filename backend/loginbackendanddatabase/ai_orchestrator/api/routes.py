@@ -1,13 +1,13 @@
-from ai_orchestrator.api.schemas import QuestionPayload
-from ai_orchestrator.cache.static_cache import cache_instance
-from ai_orchestrator.inference.client import run_inference
-from ai_orchestrator.utils.question_utils import is_compound_question
+from fastapi import APIRouter, Request
+from .schemas import QuestionPayload
+from ..inference.client import run_inference
+from ..utils.question_utils import is_compound_question
 
 router = APIRouter()
 
 @router.post("/answer")
 async def answer_question(payload: QuestionPayload, request: Request):
-    static_cache = cache_instance
+    static_cache = request.app.state.static_cache
 
     cached, score = static_cache.find(
         payload.question,

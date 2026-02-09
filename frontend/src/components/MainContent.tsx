@@ -9,10 +9,11 @@ interface MainContentProps {
   messages: any[];
   setMessages: React.Dispatch<React.SetStateAction<any[]>>;
   activeSearchMode: 'exam' | 'guided';
+  onQuickStart: (query: string) => void;
   setIsSearching: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export function MainContent({ chatId, messages, setMessages, activeSearchMode, setIsSearching }: MainContentProps) {
+export function MainContent({ chatId, messages, setMessages, activeSearchMode, onQuickStart, setIsSearching }: MainContentProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -34,7 +35,7 @@ export function MainContent({ chatId, messages, setMessages, activeSearchMode, s
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <WelcomeScreen />
+            <WelcomeScreen onQuickStart={onQuickStart} />
           </motion.div>
         ) : (
           <div className="space-y-4 md:space-y-6">

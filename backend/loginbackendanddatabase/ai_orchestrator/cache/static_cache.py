@@ -1,25 +1,14 @@
 import json
 from pathlib import Path
-from ai_orchestrator.cache.matcher import overlap_score, keyword_boost
-from ai_orchestrator.cache.normalizer import normalize
+from .matcher import overlap_score, keyword_boost
+from .normalizer import normalize
 
 # Path relative to this file's location
 DATASET_PATH = Path(__file__).parent.parent.parent / "data" / "expanded_dataset.jsonl"
 
 class StaticCache:
-    _instance = None
-
-    def __new__(cls):
-        if cls._instance is None:
-            print("DEBUG: Initializing StaticCache Singleton...")
-            cls._instance = super(StaticCache, cls).__new__(cls)
-            cls._instance.items = []
-            cls._instance.loaded = False
-        return cls._instance
-
-    def _ensure_loaded(self):
-        if not self.loaded:
-            self.load()
+    def __init__(self):
+        self.items = []
 
     def load(self):
         self.items = []
@@ -40,26 +29,20 @@ class StaticCache:
 
         if not actual_path:
             print(f"WARNING: Dataset not found in any of: {[str(p.absolute()) for p in possible_paths]}")
-            self.loaded = True # Prevent infinite retry if file missing
             return
 
         print(f"DEBUG: Loading dataset from {actual_path.absolute()}")
-        try:
-            with actual_path.open("r", encoding="utf-8") as f:
-                for line in f:
-                    line = line.strip()
-                    if not line:
-                        continue
-                    try:
-                        self.items.append(json.loads(line))
-                    except json.JSONDecodeError as e:
-                        print(f"ERROR: Failed to parse line in dataset: {e}")
-                        continue
-            self.loaded = True
-            print(f"DEBUG: Loaded {len(self.items)} items into cache.")
-        except Exception as e:
-            print(f"ERROR reading dataset: {str(e)}")
-            self.loaded = True
+        with actual_path.open("r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    self.items.append(json.loads(line))
+                except json.JSONDecodeError as e:
+                    print(f"ERROR: Failed to parse line in dataset: {e}")
+                    continue
+        print(f"DEBUG: Loaded {len(self.items)} items into cache.")
 
     def _mandatory_token_gate(self, query: str, item_question: str) -> bool:
         """
@@ -79,7 +62,6 @@ class StaticCache:
         return True
 
     def find(self, question: str, subject: str | None = None):
-        self._ensure_loaded()
         best = None
         best_score = 0.0
 
@@ -104,6 +86,3 @@ class StaticCache:
             return best, best_score
 
         return None, 0.0
-
-# Export a single global instance
-cache_instance = StaticCache()

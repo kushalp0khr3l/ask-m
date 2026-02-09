@@ -15,47 +15,27 @@ from fastapi.middleware.cors import CORSMiddleware
 
 # AI Orchestrator Imports
 from ai_orchestrator.api.routes import router as ai_router
+from ai_orchestrator.cache.static_cache import StaticCache
 
 app = FastAPI()
 
-# AI Cache is now handled via singleton lazy-loading in ai_orchestrator/cache/static_cache.py
+@app.on_event("startup")
+def startup_event():
+    print("DEBUG: Starting AI Orchestrator Cache...")
+    cache = StaticCache()
+    cache.load()
+    app.state.static_cache = cache
+    print("DEBUG: AI Orchestrator Ready")
 
 # Enable CORS (Cross-Origin Resource Sharing)
-# In production, ALLOWED_ORIGINS should be set to your frontend URL.
-# If not set, we default to "*" for flexibility, but must disable allow_credentials.
 ALLOWED_ORIGINS = os.environ.get("ALLOWED_ORIGINS", "*").split(",")
-ALLOW_CREDENTIALS = "*" not in ALLOWED_ORIGINS and len(ALLOWED_ORIGINS) > 0
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
-    allow_credentials=ALLOW_CREDENTIALS,
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-from fastapi.responses import JSONResponse
-
-@app.exception_handler(Exception)
-async def global_exception_handler(request, exc):
-    """
-    Catch-all exception handler to ensure we always return JSON with CORS headers
-    instead of an opaque Vercel 500 error page.
-    """
-    if isinstance(exc, HTTPException):
-        # Re-raise or return the specific HTTPException response
-        return JSONResponse(
-            status_code=exc.status_code,
-            content={"detail": exc.detail},
-        )
-        
-    print(f"GLOBAL ERROR: {type(exc).__name__}: {str(exc)}")
-    import traceback
-    traceback.print_exc()
-    return JSONResponse(
-        status_code=500,
-        content={"detail": "Internal Server Error", "message": str(exc)},
-    )
 
 # Supabase Configuration
 SUPABASE_URL = os.environ.get("SUPABASE_URL")
@@ -222,12 +202,8 @@ async def get_chats(authorization: str = Header(None)):
     if not user:
         raise HTTPException(status_code=401, detail="Invalid token")
     
-    try:
-        response = supabase.table("chats").select("*").eq("user_id", user.id).order("updated_at", desc=True).execute()
-        return response.data
-    except Exception as e:
-        print(f"ERROR fetching chats: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
+    response = supabase.table("chats").select("*").eq("user_id", user.id).order("updated_at", desc=True).execute()
+    return response.data
 
 @app.post("/chats")
 async def create_chat(payload: dict, authorization: str = Header(None)):
@@ -239,20 +215,12 @@ async def create_chat(payload: dict, authorization: str = Header(None)):
     if not user:
         raise HTTPException(status_code=401, detail="Invalid token")
     
-    try:
-        chat_data = {
-            "user_id": user.id,
-            "title": payload.get("title", "New Chat")
-        }
-        print(f"DEBUG: Creating chat for user {user.id} with title: {chat_data['title']}")
-        response = supabase.table("chats").insert(chat_data).execute()
-        if not response.data:
-            print(f"ERROR: No data returned after chat insert. Response: {response}")
-            raise HTTPException(status_code=500, detail="Failed to create chat record")
-        return response.data[0]
-    except Exception as e:
-        print(f"ERROR creating chat: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
+    chat_data = {
+        "user_id": user.id,
+        "title": payload.get("title", "New Chat")
+    }
+    response = supabase.table("chats").insert(chat_data).execute()
+    return response.data[0]
 
 @app.get("/chats/{chat_id}/messages")
 async def get_messages(chat_id: str, authorization: str = Header(None)):
@@ -264,19 +232,13 @@ async def get_messages(chat_id: str, authorization: str = Header(None)):
     if not user:
         raise HTTPException(status_code=401, detail="Invalid token")
     
-    try:
-        # Ensure chat belongs to user
-        chat = supabase.table("chats").select("user_id").eq("id", chat_id).execute()
-        if not chat.data or chat.data[0]["user_id"] != user.id:
-            raise HTTPException(status_code=403, detail="Forbidden")
+    # Ensure chat belongs to user
+    chat = supabase.table("chats").select("user_id").eq("id", chat_id).execute()
+    if not chat.data or chat.data[0]["user_id"] != user.id:
+        raise HTTPException(status_code=403, detail="Forbidden")
 
-        response = supabase.table("messages").select("*").eq("chat_id", chat_id).order("created_at", desc=False).execute()
-        return response.data
-    except HTTPException:
-        raise
-    except Exception as e:
-        print(f"ERROR fetching messages for chat {chat_id}: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
+    response = supabase.table("messages").select("*").eq("chat_id", chat_id).order("created_at", desc=False).execute()
+    return response.data
 
 @app.post("/chats/{chat_id}/messages")
 async def add_message(chat_id: str, payload: dict, authorization: str = Header(None)):
@@ -288,31 +250,25 @@ async def add_message(chat_id: str, payload: dict, authorization: str = Header(N
     if not user:
         raise HTTPException(status_code=401, detail="Invalid token")
     
-    try:
-        # Ensure chat belongs to user
-        chat = supabase.table("chats").select("user_id").eq("id", chat_id).execute()
-        if not chat.data or chat.data[0]["user_id"] != user.id:
-            raise HTTPException(status_code=403, detail="Forbidden")
+    # Ensure chat belongs to user
+    chat = supabase.table("chats").select("user_id").eq("id", chat_id).execute()
+    if not chat.data or chat.data[0]["user_id"] != user.id:
+        raise HTTPException(status_code=403, detail="Forbidden")
 
-        message_data = {
-            "chat_id": chat_id,
-            "user_id": user.id,
-            "role": payload.get("role"),
-            "content": payload.get("content"),
-            "metadata": payload.get("metadata", {})
-        }
-        
-        response = supabase.table("messages").insert(message_data).execute()
-        
-        # Update chat timestamp
-        supabase.table("chats").update({"updated_at": "now()"}).eq("id", chat_id).execute()
-        
-        return response.data[0]
-    except HTTPException:
-        raise
-    except Exception as e:
-        print(f"ERROR adding message to chat {chat_id}: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
+    message_data = {
+        "chat_id": chat_id,
+        "user_id": user.id,
+        "role": payload.get("role"),
+        "content": payload.get("content"),
+        "metadata": payload.get("metadata", {})
+    }
+    
+    response = supabase.table("messages").insert(message_data).execute()
+    
+    # Update chat timestamp
+    supabase.table("chats").update({"updated_at": "now()"}).eq("id", chat_id).execute()
+    
+    return response.data[0]
 
 # Include AI Routes
 app.include_router(ai_router)
