@@ -7,6 +7,18 @@ router = APIRouter()
 
 @router.post("/answer")
 async def answer_question(payload: QuestionPayload, request: Request):
+    # ==================================================
+    # QUICK GREETING HANDLER
+    # ==================================================
+    greetings = ["hi", "hello", "hey", "hola", "namaste"]
+    if payload.question.lower().strip() in greetings:
+        return {
+            "status": "cache_exact",
+            "message": "Friendly greeting detected.",
+            "answer": "Hello! I'm Ask-M, your Kathmandu University syllabus assistant. How can I help you today?",
+            "confidence": 1.0
+        }
+
     static_cache = request.app.state.static_cache
 
     cached, score = static_cache.find(
