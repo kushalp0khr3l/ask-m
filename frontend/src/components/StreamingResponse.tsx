@@ -4,7 +4,7 @@ import { BookOpen, FileText, ImageIcon, ExternalLink, Zap } from 'lucide-react';
 import logoImage from '../assets/logo.jpg';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
-import rehypeMathjax from 'rehype-mathjax';
+import rehypeMathjax from 'rehype-mathjax/browser';
 
 interface StreamingResponseProps {
   query?: string;
