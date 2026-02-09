@@ -1,5 +1,5 @@
 from .schemas import QuestionPayload
-from .static_cache import cache_instance
+from ..cache.static_cache import cache_instance
 from ..inference.client import run_inference
 from ..utils.question_utils import is_compound_question
 
