@@ -1,8 +1,8 @@
-import { motion } from 'motion/react';
 import { WelcomeScreen } from './WelcomeScreen';
 import { SearchResponse } from './SearchResponse';
 import { StreamingResponse } from './StreamingResponse';
-import { useRef, useEffect } from 'react';
+import { useRef, useState } from 'react';
+import { ArrowDown } from 'lucide-react';
 
 interface MainContentProps {
   chatId: string | null;
@@ -15,17 +15,28 @@ interface MainContentProps {
 
 export function MainContent({ chatId, messages, setMessages, activeSearchMode, onQuickStart, setIsSearching }: MainContentProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [showScrollButton, setShowScrollButton] = useState(false);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+  const handleScroll = () => {
+    if (!scrollContainerRef.current) return;
+
+    const { scrollTop, scrollHeight, clientHeight } = scrollContainerRef.current;
+    // Show button if we are more than 100px away from bottom
+    const isDistanceFromBottom = scrollHeight - scrollTop - clientHeight > 100;
+    setShowScrollButton(isDistanceFromBottom);
+  };
 
   return (
-    <div className="flex-1 overflow-y-auto pb-32 md:pb-32 pt-16 md:pt-0 scrollbar-hide">
+    <div
+      ref={scrollContainerRef}
+      onScroll={handleScroll}
+      className="flex-1 overflow-y-auto pb-32 md:pb-32 pt-16 md:pt-0 scrollbar-hide relative"
+    >
       {messages.length === 0 ? (
         <WelcomeScreen onQuickStart={onQuickStart} />
       ) : (
@@ -87,6 +98,16 @@ export function MainContent({ chatId, messages, setMessages, activeSearchMode, o
 
           <div ref={messagesEndRef} />
         </div>
+      )}
+      {/* Scroll to Bottom Button */}
+      {showScrollButton && (
+        <button
+          onClick={scrollToBottom}
+          className="fixed bottom-24 right-8 bg-[#3D3E40] hover:bg-[#4D4E50] text-white p-3 rounded-full shadow-lg transition-all z-50 border border-[#4D4E50]"
+          aria-label="Scroll to bottom"
+        >
+          <ArrowDown className="w-5 h-5" />
+        </button>
       )}
     </div>
   );

@@ -58,6 +58,8 @@ export function StreamingResponse({ query, content, isComplete, status, onInfere
     .replace(/\\\]/g, '$$$$')
     .replace(/\\\(/g, '$$')
     .replace(/\\\)/g, '$$')
+    .replace(/√(\d+|\w+|{[^}]+})/g, '\\sqrt{$1}') // Replace √x with \sqrt{x}
+    .replace(/√/g, '\\sqrt{}') // Replace bare √ with empty sqrt
     .replace(/`([^`\n]+)`/g, (match, p1) => (isMathy(p1) ? `$${p1}$` : match));
 
   return (
@@ -117,7 +119,7 @@ export function StreamingResponse({ query, content, isComplete, status, onInfere
         <div className="prose prose-invert prose-sm md:prose-base max-w-none text-white/90 leading-relaxed">
           <ReactMarkdown
             remarkPlugins={[remarkMath]}
-            rehypePlugins={[rehypeKatex]}
+            rehypePlugins={[[rehypeKatex, { strict: false }]]}
             components={{
               // Premium styling for markdown elements
               strong: ({ node, ...prefix }) => <span className="text-white font-bold" {...prefix} />,
