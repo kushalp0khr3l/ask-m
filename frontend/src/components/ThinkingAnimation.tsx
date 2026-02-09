@@ -9,11 +9,8 @@ export function ThinkingAnimation({ query }: ThinkingAnimationProps) {
   return (
     <div className="max-w-4xl mx-auto px-4 md:px-8 py-8 md:py-12 space-y-4 md:space-y-6">
       {/* Ask-M Thinking Response */}
-      <motion.div
+      <div
         className="bg-[#1E1F20] rounded-2xl md:rounded-3xl p-4 md:p-8 border border-[#2D2E30]"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3, delay: 0.1 }}
       >
         {/* Header */}
         <div className="flex items-center gap-3 mb-4 md:mb-6">
@@ -111,7 +108,7 @@ export function ThinkingAnimation({ query }: ThinkingAnimationProps) {
             </div>
           </motion.div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

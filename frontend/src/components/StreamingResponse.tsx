@@ -65,8 +65,8 @@ export function StreamingResponse({ query, content, isComplete, status, onInfere
       {/* Ask-M Response */}
       <motion.div
         className="bg-[#1E1F20] rounded-2xl md:rounded-3xl p-4 md:p-8 border border-[#2D2E30]"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.3, delay: 0.1 }}
       >
         {/* Header */}
@@ -171,8 +171,8 @@ export function StreamingResponse({ query, content, isComplete, status, onInfere
           {showSources && (
             <motion.div
               className="border-t border-[#2D2E30] pt-4 md:pt-6 space-y-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
             >
               {/* Confidence & Reasoning Section */}
