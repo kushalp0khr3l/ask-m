@@ -1,7 +1,7 @@
-from .schemas import QuestionPayload
-from ..cache.static_cache import cache_instance
-from ..inference.client import run_inference
-from ..utils.question_utils import is_compound_question
+from ai_orchestrator.api.schemas import QuestionPayload
+from ai_orchestrator.cache.static_cache import cache_instance
+from ai_orchestrator.inference.client import run_inference
+from ai_orchestrator.utils.question_utils import is_compound_question
 
 router = APIRouter()
 

@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
-from .matcher import overlap_score, keyword_boost
-from .normalizer import normalize
+from ai_orchestrator.cache.matcher import overlap_score, keyword_boost
+from ai_orchestrator.cache.normalizer import normalize
 
 # Path relative to this file's location
 DATASET_PATH = Path(__file__).parent.parent.parent / "data" / "expanded_dataset.jsonl"
