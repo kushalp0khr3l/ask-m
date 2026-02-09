@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { WelcomeScreen } from './WelcomeScreen';
 import { SearchResponse } from './SearchResponse';
 import { StreamingResponse } from './StreamingResponse';
+import { useRef, useEffect } from 'react';
 
 interface MainContentProps {
   chatId: string | null;
@@ -13,6 +14,16 @@ interface MainContentProps {
 }
 
 export function MainContent({ chatId, messages, setMessages, activeSearchMode, onQuickStart, setIsSearching }: MainContentProps) {
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
   return (
     <div className="flex-1 overflow-y-auto pb-32 md:pb-32 pt-16 md:pt-0 scrollbar-hide">
       {messages.length === 0 ? (
@@ -73,6 +84,8 @@ export function MainContent({ chatId, messages, setMessages, activeSearchMode, o
               }}
             />
           )}
+
+          <div ref={messagesEndRef} />
         </div>
       )}
     </div>
