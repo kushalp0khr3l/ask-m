@@ -4,7 +4,7 @@ import { BookOpen, FileText, ImageIcon, ExternalLink, Zap } from 'lucide-react';
 import logoImage from '../assets/logo.jpg';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
+import rehypeMathjax from 'rehype-mathjax';
 
 interface StreamingResponseProps {
   query?: string;
@@ -49,7 +49,8 @@ export function StreamingResponse({ query, content, isComplete, status, onInfere
   const isMathy = (text: string) => {
     const mathSymbols = /[√²³⁴⁵⁶⁷⁸⁹⁰∞→λθπΣΔ∇∂∫≈≠≤≥±×÷^Σ∏√]/;
     // More robust equation detection: includes single operators if accompanied by variables or numbers
-    const equationPatterns = /[+\-*/=<>]{2,}|[0-9xXyYzZ\(\)]\s*[+\-*/=<>]|[+\-*/=<>] \s*[0-9xXyYzZ\(\)]/;
+    // Also matches single variables like "x", "y", "n" closer to math context if needed
+    const equationPatterns = /[+\-*/=<>]{2,}|[0-9xXyYzZ\(\)]\s*[+\-*/=<>]|[+\-*/=<>] \s*[0-9xXyYzZ\(\)]|^[a-zA-Z]$/;
     return mathSymbols.test(text) || equationPatterns.test(text);
   };
 
@@ -58,6 +59,7 @@ export function StreamingResponse({ query, content, isComplete, status, onInfere
     .replace(/\\\]/g, '$$$$')
     .replace(/\\\(/g, '$$')
     .replace(/\\\)/g, '$$')
+    .replace(/sqrt\(([^)]+)\)/g, '\\sqrt{$1}') // Replace sqrt(expression) with \sqrt{expression}
     .replace(/√(\d+|\w+|{[^}]+})/g, '\\sqrt{$1}') // Replace √x with \sqrt{x}
     .replace(/√/g, '\\sqrt{}') // Replace bare √ with empty sqrt
     .replace(/`([^`\n]+)`/g, (match, p1) => (isMathy(p1) ? `$${p1}$` : match));
@@ -119,7 +121,7 @@ export function StreamingResponse({ query, content, isComplete, status, onInfere
         <div className="prose prose-invert prose-sm md:prose-base max-w-none text-white/90 leading-relaxed">
           <ReactMarkdown
             remarkPlugins={[remarkMath]}
-            rehypePlugins={[[rehypeKatex, { strict: false }]]}
+            rehypePlugins={[rehypeMathjax]}
             components={{
               // Premium styling for markdown elements
               strong: ({ node, ...prefix }) => <span className="text-white font-bold" {...prefix} />,
