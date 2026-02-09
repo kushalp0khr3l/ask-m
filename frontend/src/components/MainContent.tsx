@@ -15,18 +15,27 @@ interface MainContentProps {
 
 export function MainContent({ chatId, messages, setMessages, activeSearchMode, onQuickStart, setIsSearching }: MainContentProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const scrollTimeoutRef = useRef<any>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    // Clear any pending scroll to prevent multiple rapid scrolls
+    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+
+    scrollTimeoutRef.current = setTimeout(() => {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100); // Small delay to let layout settle
   };
 
   useEffect(() => {
     scrollToBottom();
+    return () => {
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    };
   }, [messages]);
 
   return (
     <div className="flex-1 overflow-y-auto pb-32 md:pb-32 pt-16 md:pt-0 scrollbar-hide">
-      <AnimatePresence mode="popLayout">
+      <AnimatePresence mode="wait">
         {messages.length === 0 ? (
           <motion.div
             key="welcome"
@@ -38,7 +47,12 @@ export function MainContent({ chatId, messages, setMessages, activeSearchMode, o
             <WelcomeScreen onQuickStart={onQuickStart} />
           </motion.div>
         ) : (
-          <div className="space-y-4 md:space-y-6">
+          <motion.div
+            key="messages"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="space-y-4 md:space-y-6"
+          >
             {messages.map((msg, index) => {
               const isUser = msg.role === 'user';
 
@@ -46,8 +60,8 @@ export function MainContent({ chatId, messages, setMessages, activeSearchMode, o
                 return (
                   <motion.div
                     key={`user-${index}`}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     className="max-w-4xl mx-auto px-4 md:px-8 flex justify-end"
                   >
                     <div className="bg-[#2D2E30] rounded-2xl px-4 md:px-6 py-3 md:py-4 max-w-2xl border border-[#3D3E40]/30 shadow-sm">
@@ -83,8 +97,8 @@ export function MainContent({ chatId, messages, setMessages, activeSearchMode, o
             {messages.length > 0 && messages[messages.length - 1].role === 'user' && (
               <motion.div
                 key={`generation-${messages.length - 1}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
               >
                 <SearchResponse
                   chatId={chatId}
@@ -107,7 +121,7 @@ export function MainContent({ chatId, messages, setMessages, activeSearchMode, o
             )}
 
             <div ref={messagesEndRef} />
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>
