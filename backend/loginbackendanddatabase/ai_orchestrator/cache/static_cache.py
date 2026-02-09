@@ -44,6 +44,57 @@ class StaticCache:
                     continue
         print(f"DEBUG: Loaded {len(self.items)} items into cache.")
 
+    def save_or_update(self, entry: dict):
+        """
+        Update an existing entry if found (by exact question match),
+        otherwise append a new one. Persistent to JSONL.
+        """
+        normalized_new = normalize(entry["question"])
+        updated = False
+
+        for item in self.items:
+            if normalize(item["question"]) == normalized_new:
+                # Update specific mode answers if provided
+                if entry.get("exam_mode_answer"):
+                    item["exam_mode_answer"] = entry["exam_mode_answer"]
+                if entry.get("guided_mode_answer"):
+                    item["guided_mode_answer"] = entry["guided_mode_answer"]
+                if entry.get("subject"):
+                    item["subject"] = entry["subject"]
+                if entry.get("marks"):
+                    item["marks"] = entry["marks"]
+                updated = True
+                break
+
+        if not updated:
+            self.items.append(entry)
+
+        # Rewrite the file to reflect updates/additions
+        # (For production with very large datasets, this should be optimized, 
+        # but for this scale it ensures consistency)
+        try:
+            # First find the actual path
+            possible_paths = [
+                DATASET_PATH,
+                Path(__file__).parent.parent.parent / "loginbackendanddatabase" / "data" / "expanded_dataset.jsonl",
+                Path.cwd() / "data" / "expanded_dataset.jsonl",
+                Path.cwd() / "backend" / "loginbackendanddatabase" / "data" / "expanded_dataset.jsonl"
+            ]
+            
+            actual_path = None
+            for p in possible_paths:
+                if p.exists():
+                    actual_path = p
+                    break
+            
+            if actual_path:
+                with actual_path.open("w", encoding="utf-8") as f:
+                    for item in self.items:
+                        f.write(json.dumps(item, ensure_ascii=False) + "\n")
+                print(f"DEBUG: Cache updated and saved to {actual_path.absolute()}")
+        except Exception as e:
+            print(f"ERROR: Failed to save cache: {e}")
+
     def _mandatory_token_gate(self, query: str, item_question: str) -> bool:
         """
         HARD SEMANTIC GATE:

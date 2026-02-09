@@ -18,15 +18,24 @@ class StaticCache:
                     continue
                 self.items.append(json.loads(line))
 
+    def save_entry(self, entry: dict):
+        """
+        Append a new entry to cache (JSONL-safe) and memory
+        """
+        # Avoid exact duplicate questions
+        for item in self.items:
+            if normalize(item["question"]) == normalize(entry["question"]):
+                return  # already cached
+
+        self.items.append(entry)
+
+        with DATASET_PATH.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+
     def _mandatory_token_gate(self, query: str, item_question: str) -> bool:
-        """
-        HARD SEMANTIC GATE:
-        If query contains strong intent words, item must also contain them.
-        """
         q = normalize(query)
         iq = normalize(item_question)
 
-        # Add more tokens here later if needed
         mandatory_tokens = ["priority"]
 
         for token in mandatory_tokens:
@@ -40,11 +49,9 @@ class StaticCache:
         best_score = 0.0
 
         for item in self.items:
-            # Subject guard
             if subject and item.get("subject") != subject:
                 continue
 
-            # Mandatory semantic gate (CRITICAL FIX)
             if not self._mandatory_token_gate(question, item["question"]):
                 continue
 
