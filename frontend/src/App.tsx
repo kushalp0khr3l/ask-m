@@ -118,6 +118,8 @@ export default function App() {
 
   const handleSearch = async (query: string, mode: 'exam' | 'guided' = 'guided') => {
     setIsSearching(true);
+    setActiveSearchMode(mode); // Set mode FIRST, before any async operations
+
     try {
       let chatId = activeChatId;
       const session = (await supabase.auth.getSession()).data.session;
@@ -148,7 +150,6 @@ export default function App() {
           }
         } catch (err) {
           console.error('Failed to create chat:', err);
-          // Don't return, allow user to see message but maybe AI response will fail later or work if chatId exists
         }
       }
 
@@ -170,9 +171,6 @@ export default function App() {
           console.error('Failed to save user message:', err);
         }
       }
-
-      // 3. Trigger AI response (this will be handled by the Streaming UI component which we'll update)
-      setActiveSearchMode(mode);
     } catch (err) {
       console.error('Search failed:', err);
       setIsSearching(false);
