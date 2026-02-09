@@ -22,6 +22,12 @@ export function SearchResponse({ chatId, query, mode, onAnswerComplete }: Search
   const [responseData, setResponseData] = useState<any>(null);
   const isCompletedRef = useRef(false);
   const timerRef = useRef<any>(null);
+  const modeRef = useRef(mode); // Ref to always hold the latest mode value
+
+  // Keep modeRef in sync with the mode prop
+  useEffect(() => {
+    modeRef.current = mode;
+  }, [mode]);
 
   const fetchResponse = async (forceInference = false) => {
     setIsLoading(true);
@@ -33,6 +39,9 @@ export function SearchResponse({ chatId, query, mode, onAnswerComplete }: Search
       setResponseData(null);
     }
 
+    // Capture the current mode at fetch time
+    const currentMode = modeRef.current;
+
     try {
       const rawBackendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
       const backendUrl = rawBackendUrl.replace(/\/$/, '');
@@ -43,7 +52,7 @@ export function SearchResponse({ chatId, query, mode, onAnswerComplete }: Search
         },
         body: JSON.stringify({
           question: query,
-          mode: mode,
+          mode: currentMode,
           enable_inference: forceInference
         }),
       });
