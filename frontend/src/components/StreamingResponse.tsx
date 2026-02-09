@@ -4,7 +4,7 @@ import { BookOpen, FileText, ImageIcon, ExternalLink, Zap } from 'lucide-react';
 import logoImage from '../assets/logo.jpg';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
-import rehypeMathjax from 'rehype-mathjax/browser';
+import rehypeMathjax from 'rehype-mathjax';
 
 interface StreamingResponseProps {
   query?: string;
@@ -55,13 +55,16 @@ export function StreamingResponse({ query, content, isComplete, status, onInfere
   };
 
   const processedSummary = (content.summary || '')
-    .replace(/\\\[/g, '$$$$')
-    .replace(/\\\]/g, '$$$$')
-    .replace(/\\\(/g, '$$')
-    .replace(/\\\)/g, '$$')
-    .replace(/sqrt\(([^)]+)\)/g, '\\sqrt{$1}') // Replace sqrt(expression) with \sqrt{expression}
-    .replace(/√(\d+|\w+|{[^}]+})/g, '\\sqrt{$1}') // Replace √x with \sqrt{x}
-    .replace(/√/g, '\\sqrt{}') // Replace bare √ with empty sqrt
+    // Handle double-escaped or single-escaped delimiters from LLM output
+    .replace(/\\+(\[)/g, '$$$$')
+    .replace(/\\+(\])/g, '$$$$')
+    .replace(/\\+(\()/g, '$$')
+    .replace(/\\+(\))/g, '$$')
+    // Handle common function text to math
+    .replace(/sqrt\(([^)]+)\)/g, '\\sqrt{$1}')
+    .replace(/√(\d+|\w+|{[^}]+})/g, '\\sqrt{$1}')
+    .replace(/√/g, '\\sqrt{}')
+    // Handle inline math in backticks
     .replace(/`([^`\n]+)`/g, (match, p1) => (isMathy(p1) ? `$${p1}$` : match));
 
   return (
@@ -86,7 +89,7 @@ export function StreamingResponse({ query, content, isComplete, status, onInfere
             animate={{ opacity: 1, height: 'auto' }}
             className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 md:p-6 mb-4 space-y-4"
           >
-            {/* ... (Banner Content stays same) */}
+            {/* Banner Content */}
             <div className="flex items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-amber-500/20 rounded-lg">
