@@ -77,36 +77,6 @@ export function ThinkingAnimation({ query }: ThinkingAnimationProps) {
             ))}
           </div>
 
-          {/* Processing stages indicator */}
-          <motion.div
-            className="mt-8 pt-6 border-t border-[#2D2E30]"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
-            <div className="space-y-3">
-              {[
-                { text: 'Analyzing syllabus references', delay: 0 },
-                { text: 'Retrieving relevant documents', delay: 0.3 },
-                { text: 'Processing OCR notes', delay: 0.6 },
-              ].map((stage, i) => (
-                <motion.div
-                  key={i}
-                  className="flex items-center gap-2 text-xs text-[#A0A0A0]"
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: stage.delay }}
-                >
-                  <motion.div
-                    className="w-1.5 h-1.5 bg-white rounded-full"
-                    animate={{ scale: [1, 1.3, 1] }}
-                    transition={{ duration: 1, repeat: Infinity, delay: stage.delay }}
-                  />
-                  {stage.text}
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </div>
     </div>
