@@ -29,10 +29,13 @@ def startup_event():
 
 # Enable CORS (Cross-Origin Resource Sharing)
 ALLOWED_ORIGINS = os.environ.get("ALLOWED_ORIGINS", "*").split(",")
+# FastAPI/Browser security rule: allow_credentials cannot be True if allow_origins is ["*"]
+ALLOW_CREDENTIALS = "*" not in ALLOWED_ORIGINS
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
-    allow_credentials=True,
+    allow_credentials=ALLOW_CREDENTIALS,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -202,8 +205,12 @@ async def get_chats(authorization: str = Header(None)):
     if not user:
         raise HTTPException(status_code=401, detail="Invalid token")
     
-    response = supabase.table("chats").select("*").eq("user_id", user.id).order("updated_at", desc=True).execute()
-    return response.data
+    try:
+        response = supabase.table("chats").select("*").eq("user_id", user.id).order("updated_at", desc=True).execute()
+        return response.data
+    except Exception as e:
+        print(f"ERROR fetching chats: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
 
 @app.post("/chats")
 async def create_chat(payload: dict, authorization: str = Header(None)):
@@ -215,12 +222,20 @@ async def create_chat(payload: dict, authorization: str = Header(None)):
     if not user:
         raise HTTPException(status_code=401, detail="Invalid token")
     
-    chat_data = {
-        "user_id": user.id,
-        "title": payload.get("title", "New Chat")
-    }
-    response = supabase.table("chats").insert(chat_data).execute()
-    return response.data[0]
+    try:
+        chat_data = {
+            "user_id": user.id,
+            "title": payload.get("title", "New Chat")
+        }
+        print(f"DEBUG: Creating chat for user {user.id} with title: {chat_data['title']}")
+        response = supabase.table("chats").insert(chat_data).execute()
+        if not response.data:
+            print(f"ERROR: No data returned after chat insert. Response: {response}")
+            raise HTTPException(status_code=500, detail="Failed to create chat record")
+        return response.data[0]
+    except Exception as e:
+        print(f"ERROR creating chat: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
 
 @app.get("/chats/{chat_id}/messages")
 async def get_messages(chat_id: str, authorization: str = Header(None)):
@@ -232,13 +247,19 @@ async def get_messages(chat_id: str, authorization: str = Header(None)):
     if not user:
         raise HTTPException(status_code=401, detail="Invalid token")
     
-    # Ensure chat belongs to user
-    chat = supabase.table("chats").select("user_id").eq("id", chat_id).execute()
-    if not chat.data or chat.data[0]["user_id"] != user.id:
-        raise HTTPException(status_code=403, detail="Forbidden")
+    try:
+        # Ensure chat belongs to user
+        chat = supabase.table("chats").select("user_id").eq("id", chat_id).execute()
+        if not chat.data or chat.data[0]["user_id"] != user.id:
+            raise HTTPException(status_code=403, detail="Forbidden")
 
-    response = supabase.table("messages").select("*").eq("chat_id", chat_id).order("created_at", desc=False).execute()
-    return response.data
+        response = supabase.table("messages").select("*").eq("chat_id", chat_id).order("created_at", desc=False).execute()
+        return response.data
+    except HTTPException:
+        raise
+    except Exception as e:
+        print(f"ERROR fetching messages for chat {chat_id}: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
 
 @app.post("/chats/{chat_id}/messages")
 async def add_message(chat_id: str, payload: dict, authorization: str = Header(None)):
@@ -250,25 +271,31 @@ async def add_message(chat_id: str, payload: dict, authorization: str = Header(N
     if not user:
         raise HTTPException(status_code=401, detail="Invalid token")
     
-    # Ensure chat belongs to user
-    chat = supabase.table("chats").select("user_id").eq("id", chat_id).execute()
-    if not chat.data or chat.data[0]["user_id"] != user.id:
-        raise HTTPException(status_code=403, detail="Forbidden")
+    try:
+        # Ensure chat belongs to user
+        chat = supabase.table("chats").select("user_id").eq("id", chat_id).execute()
+        if not chat.data or chat.data[0]["user_id"] != user.id:
+            raise HTTPException(status_code=403, detail="Forbidden")
 
-    message_data = {
-        "chat_id": chat_id,
-        "user_id": user.id,
-        "role": payload.get("role"),
-        "content": payload.get("content"),
-        "metadata": payload.get("metadata", {})
-    }
-    
-    response = supabase.table("messages").insert(message_data).execute()
-    
-    # Update chat timestamp
-    supabase.table("chats").update({"updated_at": "now()"}).eq("id", chat_id).execute()
-    
-    return response.data[0]
+        message_data = {
+            "chat_id": chat_id,
+            "user_id": user.id,
+            "role": payload.get("role"),
+            "content": payload.get("content"),
+            "metadata": payload.get("metadata", {})
+        }
+        
+        response = supabase.table("messages").insert(message_data).execute()
+        
+        # Update chat timestamp
+        supabase.table("chats").update({"updated_at": "now()"}).eq("id", chat_id).execute()
+        
+        return response.data[0]
+    except HTTPException:
+        raise
+    except Exception as e:
+        print(f"ERROR adding message to chat {chat_id}: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
 
 # Include AI Routes
 app.include_router(ai_router)

@@ -58,6 +58,7 @@ export function StreamingResponse({ query, content, isComplete, status, onInfere
     .replace(/\\\]/g, '$$$$')
     .replace(/\\\(/g, '$$')
     .replace(/\\\)/g, '$$')
+    .replace(/√/g, '\\sqrt')
     .replace(/`([^`\n]+)`/g, (match, p1) => (isMathy(p1) ? `$${p1}$` : match));
 
   return (
