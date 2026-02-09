@@ -47,6 +47,7 @@ export default function App() {
   const fetchChats = async (session: any) => {
     const rawBackendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
     const backendUrl = rawBackendUrl.replace(/\/$/, '');
+    console.log(`DEBUG: Fetching chats from ${backendUrl}/chats`);
     try {
       const response = await fetch(`${backendUrl}/chats`, {
         headers: {
@@ -56,9 +57,12 @@ export default function App() {
       if (response.ok) {
         const data = await response.json();
         setSearchHistory(data);
+      } else {
+        const errorData = await response.json().catch(() => ({}));
+        console.error('Failed to fetch chats:', response.status, errorData);
       }
     } catch (err) {
-      console.error('Failed to fetch chats:', err);
+      console.error('Network error fetching chats:', err);
     }
   };
 

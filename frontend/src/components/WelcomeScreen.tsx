@@ -1,10 +1,11 @@
+import { useState, useEffect } from 'react';
 import logoImage from '../assets/logo.jpg';
 
 interface WelcomeScreenProps {
   onQuickStart: (query: string) => void;
 }
 
-const quickStartOptions = [
+const DEFAULT_OPTIONS = [
   'Summarize last lecture',
   'Find syllabus references for Algorithms',
   'Upload handwritten notes',
@@ -12,6 +13,28 @@ const quickStartOptions = [
 ];
 
 export function WelcomeScreen({ onQuickStart }: WelcomeScreenProps) {
+  const [options, setOptions] = useState<string[]>(DEFAULT_OPTIONS);
+
+  useEffect(() => {
+    const fetchSamples = async () => {
+      try {
+        const rawBackendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
+        const backendUrl = rawBackendUrl.replace(/\/$/, '');
+        const response = await fetch(`${backendUrl}/cache/samples`);
+        if (response.ok) {
+          const data = await response.json();
+          if (Array.isArray(data) && data.length > 0) {
+            setOptions(data);
+          }
+        }
+      } catch (err) {
+        console.error('Failed to fetch cache samples:', err);
+      }
+    };
+
+    fetchSamples();
+  }, []);
+
   return (
     <div className="h-full flex items-center justify-center px-4 md:px-8 pt-40 pb-40">
       <div className="max-w-3xl w-full text-center space-y-6 md:space-y-8">
@@ -30,11 +53,11 @@ export function WelcomeScreen({ onQuickStart }: WelcomeScreenProps) {
 
         {/* Quick Start Options */}
         <div className="flex flex-wrap items-center justify-center gap-3 px-4">
-          {quickStartOptions.map((option, index) => (
+          {options.map((option, index) => (
             <button
               key={index}
               onClick={() => onQuickStart(option)}
-              className="px-4 py-3 md:px-6 bg-[#2D2E30] hover:bg-[#3D3E40] text-white rounded-full transition-colors text-sm md:text-base"
+              className="px-4 py-3 md:px-6 bg-[#2D2E30] hover:bg-[#3D3E40] text-white rounded-full transition-colors text-sm md:text-base border border-[#3D3E40]/50 hover:border-white/20 shadow-lg hover:shadow-white/5 active:scale-95 transform transition-transform"
             >
               {option}
             </button>

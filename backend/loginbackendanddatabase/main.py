@@ -1,5 +1,6 @@
 import os
-from fastapi import FastAPI, HTTPException, Header
+from fastapi import FastAPI, HTTPException, Header, Depends
+from typing import Annotated
 from supabase import create_client, Client
 from dotenv import load_dotenv
 from pathlib import Path
@@ -32,7 +33,7 @@ ALLOWED_ORIGINS = os.environ.get("ALLOWED_ORIGINS", "*").split(",")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
-    allow_credentials=True,
+    allow_credentials=False if "*" in ALLOWED_ORIGINS else True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -118,7 +119,7 @@ async def send_welcome_email(email: str, name: str):
         return False
 
 @app.post("/auth/verify")
-async def verify_user(authorization: str = Header(None)):
+async def verify_user(authorization: Annotated[str | None, Header()] = None):
     """
     Receives a JWT from the frontend, verifies it with Supabase,
     and ensures the user exists in the 'profiles' table without overwriting data.
@@ -193,7 +194,8 @@ async def verify_user(authorization: str = Header(None)):
 # Chat & History Endpoints 
 
 @app.get("/chats")
-async def get_chats(authorization: str = Header(None)):
+async def get_chats(authorization: Annotated[str | None, Header()] = None):
+    print(f"DEBUG: GET /chats - Authorization presence: {'Yes' if authorization else 'No'}")
     if not authorization:
         raise HTTPException(status_code=401, detail="Missing Authorization Header")
     
@@ -206,7 +208,7 @@ async def get_chats(authorization: str = Header(None)):
     return response.data
 
 @app.post("/chats")
-async def create_chat(payload: dict, authorization: str = Header(None)):
+async def create_chat(payload: dict, authorization: Annotated[str | None, Header()] = None):
     if not authorization:
         raise HTTPException(status_code=401, detail="Missing Authorization Header")
     
@@ -223,7 +225,7 @@ async def create_chat(payload: dict, authorization: str = Header(None)):
     return response.data[0]
 
 @app.get("/chats/{chat_id}/messages")
-async def get_messages(chat_id: str, authorization: str = Header(None)):
+async def get_messages(chat_id: str, authorization: Annotated[str | None, Header()] = None):
     if not authorization:
         raise HTTPException(status_code=401, detail="Missing Authorization Header")
     
@@ -241,7 +243,7 @@ async def get_messages(chat_id: str, authorization: str = Header(None)):
     return response.data
 
 @app.post("/chats/{chat_id}/messages")
-async def add_message(chat_id: str, payload: dict, authorization: str = Header(None)):
+async def add_message(chat_id: str, payload: dict, authorization: Annotated[str | None, Header()] = None):
     if not authorization:
         raise HTTPException(status_code=401, detail="Missing Authorization Header")
     
@@ -269,6 +271,14 @@ async def add_message(chat_id: str, payload: dict, authorization: str = Header(N
     supabase.table("chats").update({"updated_at": "now()"}).eq("id", chat_id).execute()
     
     return response.data[0]
+
+@app.get("/cache/samples")
+async def get_cache_samples():
+    """Returns random sample questions from the static cache for the UI."""
+    cache = app.state.static_cache
+    if not cache:
+        return []
+    return cache.random_samples(4)
 
 # Include AI Routes
 app.include_router(ai_router)
