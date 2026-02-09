@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { BookOpen, FileText, ImageIcon, ExternalLink, Zap } from 'lucide-react';
 import logoImage from '../assets/logo.jpg';
@@ -33,6 +33,7 @@ interface StreamingResponseProps {
 
 export function StreamingResponse({ query, content, isComplete, status, onInference, confidence, message, matchedQuestion }: StreamingResponseProps) {
   const [showSources, setShowSources] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isComplete && !showSources) {
@@ -43,11 +44,26 @@ export function StreamingResponse({ query, content, isComplete, status, onInfere
     }
   }, [isComplete, showSources]);
 
-  // Trigger MathJax typesetting when content updates or completion occurs
+  // Robust MutationObserver to ensure MathJax stays rendered during streaming or scrolling re-renders
   useEffect(() => {
-    if (window.MathJax && window.MathJax.typesetPromise) {
-      window.MathJax.typesetPromise();
-    }
+    if (!window.MathJax || !containerRef.current) return;
+
+    const observer = new MutationObserver(() => {
+      if (window.MathJax.typesetPromise) {
+        window.MathJax.typesetPromise([containerRef.current]);
+      }
+    });
+
+    observer.observe(containerRef.current, {
+      childList: true,
+      subtree: true,
+      characterData: true
+    });
+
+    // Initial typeset
+    window.MathJax.typesetPromise([containerRef.current]);
+
+    return () => observer.disconnect();
   }, [content.summary, isComplete, showSources]);
 
   const iconMap: Record<string, any> = {
@@ -61,14 +77,15 @@ export function StreamingResponse({ query, content, isComplete, status, onInfere
   // Pre-process content to handle common LaTeX delimiter issues and "math in backticks"
   const isMathy = (text: string) => {
     const mathSymbols = /[√²³⁴⁵⁶⁷⁸⁹⁰∞→λθπΣΔ∇∂∫≈≠≤≥±×÷^Σ∏√]/;
-    // More robust equation detection: includes single operators if accompanied by variables or numbers
-    // Also matches single variables like "x", "y", "n" closer to math context if needed
     const equationPatterns = /[+\-*/=<>]{2,}|[0-9xXyYzZ\(\)]\s*[+\-*/=<>]|[+\-*/=<>] \s*[0-9xXyYzZ\(\)]|^[a-zA-Z]$/;
     return mathSymbols.test(text) || equationPatterns.test(text);
   };
 
   const processedSummary = (content.summary || '')
-    // Standardize delimiters to help remark-math detect them reliably
+    // Standardize delimiters and trim internal spaces to help remark-math/MathJax
+    .replace(/\\+\[\s*(.*?)\s*\\+\]/gs, '$$$$\n$1\n$$$$')
+    .replace(/\\+\(\s*(.*?)\s*\\+\)/gs, '$$$1$$')
+    // Fallback for untrimmed or partial escapes
     .replace(/\\+\[/g, '$$$$')
     .replace(/\\+\]/g, '$$$$')
     .replace(/\\+\(/g, '$$')
@@ -84,6 +101,7 @@ export function StreamingResponse({ query, content, isComplete, status, onInfere
     <div className="max-w-4xl mx-auto px-4 md:px-8 py-8 md:py-12 space-y-4 md:space-y-6 text-white font-sans">
       {/* Ask-M Response */}
       <motion.div
+        ref={containerRef}
         className="bg-[#1E1F20] rounded-2xl md:rounded-3xl p-4 md:p-8 border border-[#2D2E30]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
